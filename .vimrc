@@ -165,13 +165,11 @@ endif
 
 " ==== GUI stuff ===============================================================
 if has('gui_running')
-"   set guifont=Input\ Mono:h11 " set font
-"   set guifont=DejaVuSansMonoForPowerline:h11
-   set guifont=PragmataPro:h11     " pp
+   set guifont=PragmataPro:h11  " pp
 "   set noantialias             " doubleplus jaggies
     color flatland-monokai      " monokai!
     set lines=80                " minimum 80 lines
-    set encoding=utf-8
+    set encoding=utf-8          " 
     set guioptions-=T           " include toolbar
 else
     if &term=='xterm' || &term == 'screen'
