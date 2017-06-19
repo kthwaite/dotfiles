@@ -88,6 +88,7 @@ set mouse=a		                " enable mouse
 set termguicolors               " true colour in the terminal
 colorscheme flatlandmonokai     " flatland monokai
 set termguicolors               " true colour scheme in the terminal
+colorscheme flatland-monokai
 set mousehide 		            " hide mouse cursor while typing
 set encoding=utf-8              " default encoding is utf-8
 scriptencoding utf-8            " script encoding is utf-8
