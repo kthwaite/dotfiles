@@ -19,6 +19,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Airline and airline themes
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" A code-completion engine for Vim
+Plugin 'Valloric/YouCompleteMe'
 " NERDTree
 Plugin 'scrooloose/nerdtree'
 " Syntastic
