@@ -258,8 +258,6 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
                                     " check python with pylint
 let g:syntastic_python_checkers = ['python', 'pylint']
-                                    " use homebrew python3
-let g:syntastic_python_python_exec = $HOME.'/.brew/bin/python3'
 
 " ==== YouCompleteMe ===========================================================
 " Path to rust source, which should be the same as the rust-src component
