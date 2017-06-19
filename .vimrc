@@ -174,12 +174,13 @@ endif
 
 " ==== GUI stuff ===============================================================
 if has('gui_running')
-   set guifont=PragmataPro:h11  " pp
-"   set noantialias             " doubleplus jaggies
-    color flatland-monokai      " monokai!
-    set lines=80                " minimum 80 lines
-    set encoding=utf-8          " 
-    set guioptions-=T           " include toolbar
+    set lines=80                    " minimum 80 lines
+    set guifont=PragmataProMono:h11 " set font
+    " colorscheme Broadcast         " broadcast
+    colorscheme flatland-monokai    " monokai
+    " set noantialias               " doubleplus jaggies
+    set encoding=utf-8
+    set guioptions-=T               " include toolbar
 else
     if &term=='xterm' || &term == 'screen'
         set t_Co=256            " 256 colour
