@@ -35,10 +35,11 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
 " Racer support for Vim
 Plugin 'racer-rust/vim-racer'
+" Extra highlighting of typedefs, enumerations etc (based on ctags)
 Plugin 'vim-scripts/TagHighlight.git'
 " Vim uses current virtualenv.
 Plugin 'jmcantrell/vim-virtualenv'
-" The ultimate undo history visualizer for VIM 
+" The ultimate undo history visualizer for VIM
 Plugin 'mbbill/undotree'
 " Show git status in gutter.
 Plugin 'airblade/vim-gitgutter'
@@ -67,7 +68,7 @@ Plugin 'elzr/vim-json'
 " ES6 support
 Plugin 'isRuslan/vim-es6'
 " Better Python syntax: http://www.vim.org/scripts/script.php?script_id=790
-" [in ~/.vimrc/syntax folder]
+" [in ~/.vim/syntax folder]
 "
 " Colour schemes
 Plugin 'sickill/vim-monokai'
@@ -152,7 +153,7 @@ set showmode 		            " show current mode
 highlight clear LineNr          " highlight the current line number
 highlight clear SignColumn      " highlight gutter symbols
 set number                      " line numbers on
-set relativenumber              " 
+set relativenumber              " for fast vertical movement
 set linespace=0                 " no extra spaces between rows
                                 " mkview preserves EVERYTHING
 set vop=cursor,folds,options,slash,unix
