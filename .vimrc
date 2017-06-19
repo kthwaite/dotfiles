@@ -21,18 +21,21 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " A code-completion engine for Vim
 Plugin 'Valloric/YouCompleteMe'
+"
+Plugin 'nvie/vim-flake8'
 " NERDTree
 Plugin 'scrooloose/nerdtree'
 " Syntastic
 Plugin 'scrooloose/syntastic'
-" Git mirror of abudden's taghighlight plugin for vim.
-Plugin 'vim-scripts/TagHighlight.git'
 " Enhanced C++ highlighting.
 Plugin 'octol/vim-cpp-enhanced-highlight'
 " rust.vim
 Plugin 'rust-lang/rust.vim'
 " TOML syntax
 Plugin 'cespare/vim-toml'
+" Racer support for Vim
+Plugin 'racer-rust/vim-racer'
+Plugin 'vim-scripts/TagHighlight.git'
 " Vim uses current virtualenv.
 Plugin 'jmcantrell/vim-virtualenv'
 " The ultimate undo history visualizer for VIM 
@@ -232,6 +235,8 @@ let g:ascii = [
 \ "     <CC C><C CC CCC $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ CCCC>' .c;`<C> C <C",
 \]
 let g:startify_custom_header = g:ascii
+let g:startify_list_order = ['files', 'bookmarks', 'sessions']
+let g:startify_files_number = 5
 
 
 " ==== Statusline / Syntastic ==================================================
@@ -253,10 +258,16 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
                                     " check python with pylint
 let g:syntastic_python_checkers = ['python', 'pylint']
+                                    " use homebrew python3
+let g:syntastic_python_python_exec = $HOME.'/.brew/bin/python3'
 
+" ==== YouCompleteMe ===========================================================
+" Path to rust source, which should be the same as the rust-src component
+" path.
+let g:ycm_rust_src_path = $HOME.'/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
 
 " ==== flake8 ==================================================================
-" let g:flake8_cmd=''
+let g:flake8_cmd=$HOME.'/.virtualenvs/core/bin/flake8'
 
 " ==== vim-cpp-enhanced-highlight ==============================================
 let g:cpp_class_scope_highlight = 1
