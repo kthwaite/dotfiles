@@ -166,7 +166,7 @@ set wildmenu                    " show list for autocomplete
 set wildmode=list:longest,full  " list all matches and complete
 set columns=80                  " wrap text at 80 columns
 set colorcolumn=81,161          " indicate col80, col161
-" set foldenable                " automatic code folding is the devil's work
+set nofoldenable                " automatic code folding is the devil's work
 
 " let macvim_skip_colorscheme=1
 " let g:molokai_original=1
