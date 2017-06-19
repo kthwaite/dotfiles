@@ -112,6 +112,9 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+" current directory is always window-local
+autocmd BufEnter * lcd %:p:h
+
 " ==== Search ==================================================================
 set incsearch                   " show matches while you type
 set hlsearch                    " highlight matches
