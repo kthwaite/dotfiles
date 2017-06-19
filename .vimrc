@@ -87,6 +87,7 @@ syntax on		                " syntax highlighting
 set mouse=a		                " enable mouse
 set termguicolors               " true colour in the terminal
 colorscheme flatlandmonokai     " flatland monokai
+set termguicolors               " true colour scheme in the terminal
 set mousehide 		            " hide mouse cursor while typing
 set encoding=utf-8              " default encoding is utf-8
 scriptencoding utf-8            " script encoding is utf-8
@@ -99,6 +100,8 @@ set noswapfile                  " no swapfile
 set nobackup                    " no backup files
 set bs=indent,eol,start         " backspace over everything!
 set ruler                       " display cursor position
+                                " :W sudo saves the file
+command W w !sudo tee % > /dev/null
 
 " remap split navigation
 noremap <C-h> <C-w>h
