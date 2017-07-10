@@ -80,8 +80,8 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " NeoVim Python hosts
-let g:python_host_prog='/usr/local/bin/python2'
-let g:python3_host_prog='/usr/local/bin/python3'
+let g:python_host_prog=$BREW_HOME.'/bin/python2'
+let g:python3_host_prog=$BREW_HOME.'/bin/python3'
 
 " ==============================================================================
 " ==== Setup ===================================================================
