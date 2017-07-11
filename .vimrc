@@ -267,6 +267,9 @@ let g:syntastic_python_checkers = ['python', 'pylint']
 " Path to rust source, which should be the same as the rust-src component
 " path.
 let g:ycm_rust_src_path = $HOME.'/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
+" global YCM config
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+" let g:ycm_key_invoke_completion = '<C-whatever>'
 
 " ==== flake8 ==================================================================
 let g:flake8_cmd=$HOME.'/.virtualenvs/core/bin/flake8'
