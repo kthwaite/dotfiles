@@ -239,7 +239,7 @@ let g:ascii = [
 \ "     <CC C><C CC CCC $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ CCCC>' .c;`<C> C <C",
 \]
 let g:startify_custom_header = g:ascii
-let g:startify_list_order = ['files', 'bookmarks', 'sessions']
+let g:startify_list_order = ['bookmarks', 'sessions']
 let g:startify_files_number = 5
 
 
