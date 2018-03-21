@@ -239,7 +239,11 @@ let g:ascii = [
 \ "     <CC C><C CC CCC $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ CCCC>' .c;`<C> C <C",
 \]
 let g:startify_custom_header = g:ascii
+<<<<<<< HEAD
+let g:startify_list_order = ['bookmarks', 'sessions']
+=======
 let g:startify_list_order = ['files', 'bookmarks', 'sessions']
+>>>>>>> 91a7ac4b880cfae9ebb88f38d0180bb04ae062c5
 let g:startify_files_number = 5
 
 
@@ -261,7 +265,8 @@ let g:syntastic_cpp_compiler = 'clang++'
                                     " and we always use:
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
                                     " check python with pylint
-let g:syntastic_python_checkers = ['python', 'pylint']
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_args = [ '--rcfile=~/.pylintrc' ]
 
 " ==== YouCompleteMe ===========================================================
 " Path to rust source, which should be the same as the rust-src component
