@@ -1,83 +1,70 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" ==== Vundle ==================================================================
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" ==== vim-plug ================================================================
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 " Airline and airline themes
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " A code-completion engine for Vim
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 "
-Plugin 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8'
 " NERDTree
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Syntastic
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 " Enhanced C++ highlighting.
-Plugin 'octol/vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight'
 " rust.vim
-Plugin 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 " TOML syntax
-Plugin 'cespare/vim-toml'
+Plug 'cespare/vim-toml'
 " Racer support for Vim
-Plugin 'racer-rust/vim-racer'
+Plug 'racer-rust/vim-racer'
 " Extra highlighting of typedefs, enumerations etc (based on ctags)
-Plugin 'vim-scripts/TagHighlight.git'
+Plug 'vim-scripts/TagHighlight'
 " Vim uses current virtualenv.
-Plugin 'jmcantrell/vim-virtualenv'
+Plug 'jmcantrell/vim-virtualenv'
 " The ultimate undo history visualizer for VIM
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree'
 " Show git status in gutter.
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Enhanced splash screen with RUFs.
-Plugin 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 " Vim script for text filtering and alignment
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 " Proper markdown formatting.
-Plugin 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 " Reveal the current file in the OS X Finder.
-Plugin 'henrik/vim-reveal-in-finder'
+Plug 'henrik/vim-reveal-in-finder'
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Decrease reliance on single-key navigation.
-Plugin 'takac/vim-hardtime'
+Plug 'takac/vim-hardtime'
 " Highlight trailing whitespace.
-Plugin 'bronson/vim-trailing-whitespace'
+Plug 'bronson/vim-trailing-whitespace'
 " Ag in Vim
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 " distraction-free writing
-Plugin 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
 " paragraph highlighting for the above
-Plugin 'junegunn/limelight.vim'
+Plug 'junegunn/limelight.vim'
 " Syntax highlighting for JSON in Vim
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 " ES6 support
-Plugin 'isRuslan/vim-es6'
+Plug 'isRuslan/vim-es6'
 " Better Python syntax: http://www.vim.org/scripts/script.php?script_id=790
 " [in ~/.vim/syntax folder]
 "
 " Colour schemes
-Plugin 'sickill/vim-monokai'
-Plugin 'morhetz/gruvbox.git'
-Plugin 'rakr/vim-one'
+Plug 'sickill/vim-monokai'
+Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
 
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()            " required
 
 " NeoVim Python hosts
 " let g:python_host_prog=$BREW_HOME.'/bin/python2'
