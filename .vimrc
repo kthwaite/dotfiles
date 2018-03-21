@@ -80,7 +80,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " NeoVim Python hosts
-let g:python_host_prog=$BREW_HOME.'/bin/python2'
+" let g:python_host_prog=$BREW_HOME.'/bin/python2'
 let g:python3_host_prog=$BREW_HOME.'/bin/python3'
 
 " ==============================================================================
@@ -239,11 +239,7 @@ let g:ascii = [
 \ "     <CC C><C CC CCC $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ CCCC>' .c;`<C> C <C",
 \]
 let g:startify_custom_header = g:ascii
-<<<<<<< HEAD
-let g:startify_list_order = ['bookmarks', 'sessions']
-=======
 let g:startify_list_order = ['files', 'bookmarks', 'sessions']
->>>>>>> 91a7ac4b880cfae9ebb88f38d0180bb04ae062c5
 let g:startify_files_number = 5
 
 
