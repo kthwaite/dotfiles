@@ -243,25 +243,26 @@ let g:startify_list_order = ['files', 'bookmarks', 'sessions']
 let g:startify_files_number = 5
 
 
-" ==== Statusline / Syntastic ==================================================
+" ==== Statusline / ALE ========================================================
 if has('statusline')
     set laststatus=2                " last window always has a status line
 endif
 
 set statusline+=%#warningmsg#
 set statusline+=%*
-
+let g:airline#extensions#ale#enabled = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'python': ['pylint'],
+\}
 
 " ==== YouCompleteMe ===========================================================
 " Path to rust source, which should be the same as the rust-src component
 " path.
-let g:ycm_rust_src_path = $HOME.'/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
+let g:ycm_rust_src_path = $YCM_RUST_SRC_PATH
 " global YCM config
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 " let g:ycm_key_invoke_completion = '<C-whatever>'
-
-" ==== flake8 ==================================================================
-let g:flake8_cmd=$HOME.'/.virtualenvs/core/bin/flake8'
 
 " ==== vim-cpp-enhanced-highlight ==============================================
 let g:cpp_class_scope_highlight = 1
