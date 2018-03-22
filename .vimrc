@@ -6,54 +6,67 @@ call plug#begin('~/.vim/plugged')
 " Airline and airline themes
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" A code-completion engine for Vim
+
+" YouCompleteMe - A code-completion engine for Vim
 Plug 'Valloric/YouCompleteMe'
-"
-Plug 'nvie/vim-flake8'
 " NERDTree
-Plug 'scrooloose/nerdtree'
-" Syntastic
-Plug 'scrooloose/syntastic'
-" Enhanced C++ highlighting.
-Plug 'octol/vim-cpp-enhanced-highlight'
-" rust.vim
-Plug 'rust-lang/rust.vim'
-" TOML syntax
-Plug 'cespare/vim-toml'
-" Racer support for Vim
-Plug 'racer-rust/vim-racer'
-" Extra highlighting of typedefs, enumerations etc (based on ctags)
-Plug 'vim-scripts/TagHighlight'
-" Vim uses current virtualenv.
-Plug 'jmcantrell/vim-virtualenv'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NerdTree'] }
+" Asynchronous Lint Engine
+Plug 'w0rp/ale'
 " The ultimate undo history visualizer for VIM
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree', { 'on': ['UndotreeFocus', 'UndotreeShow', 'UndotreeToggle'] }
 " Show git status in gutter.
 Plug 'airblade/vim-gitgutter'
 " Enhanced splash screen with RUFs.
 Plug 'mhinz/vim-startify'
-" Vim script for text filtering and alignment
-Plug 'godlygeek/tabular'
-" Proper markdown formatting.
-Plug 'plasticboy/vim-markdown'
+
+" --- C/C++
+" Enhanced C++ highlighting.
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
+" Extra highlighting of typedefs, enumerations etc (based on ctags)
+Plug 'vim-scripts/TagHighlight', { 'for': ['c', 'cpp'] }
+
+" --- Rust
+" rust.vim
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+" TOML syntax
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+" Racer support for Vim
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+
+" --- Python
+" Vim uses current virtualenv.
+Plug 'jmcantrell/vim-virtualenv'
+
+" --- Javascript
+" Syntax highlighting for JSON in Vim
+Plug 'elzr/vim-json', { 'for': 'json' }
+" ES6 support
+Plug 'isRuslan/vim-es6', { 'for': 'javascript' }
+
+" --- txt
+" distraction-free writing
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+" paragraph highlighting for the above
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+
 " Reveal the current file in the OS X Finder.
 Plug 'henrik/vim-reveal-in-finder'
+
+" Vim script for text filtering and alignment
+Plug 'godlygeek/tabular'
+
+" Ag in Vim
+Plug 'rking/ag.vim'
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 Plug 'ctrlpvim/ctrlp.vim'
+
 " Decrease reliance on single-key navigation.
 Plug 'takac/vim-hardtime'
 " Highlight trailing whitespace.
 Plug 'bronson/vim-trailing-whitespace'
-" Ag in Vim
-Plug 'rking/ag.vim'
-" distraction-free writing
-Plug 'junegunn/goyo.vim'
-" paragraph highlighting for the above
-Plug 'junegunn/limelight.vim'
-" Syntax highlighting for JSON in Vim
-Plug 'elzr/vim-json'
-" ES6 support
-Plug 'isRuslan/vim-es6'
+
+
 " Better Python syntax: http://www.vim.org/scripts/script.php?script_id=790
 " [in ~/.vim/syntax folder]
 "
@@ -236,20 +249,8 @@ if has('statusline')
 endif
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_check_on_open = 1   " check files when opened
-let g:syntastic_check_on_wq = 0     " don't check files on close
-                                    " using gcc and cppcheck on C
-let g:syntastic_c_checkers = ['gcc', 'cppcheck']
-                                    " clang++ is our cxx compiler
-let g:syntastic_cpp_compiler = 'clang++'
-                                    " and we always use:
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-                                    " check python with pylint
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = [ '--rcfile=~/.pylintrc' ]
 
 " ==== YouCompleteMe ===========================================================
 " Path to rust source, which should be the same as the rust-src component
