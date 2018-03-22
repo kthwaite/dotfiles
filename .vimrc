@@ -1,86 +1,86 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" ==== Vundle ==================================================================
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" ==== vim-plug ================================================================
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 " Airline and airline themes
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" A code-completion engine for Vim
-Plugin 'Valloric/YouCompleteMe'
-"
-Plugin 'nvie/vim-flake8'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" YouCompleteMe - A code-completion engine for Vim
+Plug 'Valloric/YouCompleteMe'
 " NERDTree
-Plugin 'scrooloose/nerdtree'
-" Syntastic
-Plugin 'scrooloose/syntastic'
-" Enhanced C++ highlighting.
-Plugin 'octol/vim-cpp-enhanced-highlight'
-" rust.vim
-Plugin 'rust-lang/rust.vim'
-" TOML syntax
-Plugin 'cespare/vim-toml'
-" Racer support for Vim
-Plugin 'racer-rust/vim-racer'
-" Extra highlighting of typedefs, enumerations etc (based on ctags)
-Plugin 'vim-scripts/TagHighlight.git'
-" Vim uses current virtualenv.
-Plugin 'jmcantrell/vim-virtualenv'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NerdTree'] }
+" Asynchronous Lint Engine
+Plug 'w0rp/ale'
 " The ultimate undo history visualizer for VIM
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree', { 'on': ['UndotreeFocus', 'UndotreeShow', 'UndotreeToggle'] }
 " Show git status in gutter.
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Enhanced splash screen with RUFs.
-Plugin 'mhinz/vim-startify'
-" Vim script for text filtering and alignment
-Plugin 'godlygeek/tabular'
-" Proper markdown formatting.
-Plugin 'plasticboy/vim-markdown'
-" Reveal the current file in the OS X Finder.
-Plugin 'henrik/vim-reveal-in-finder'
-" Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
-Plugin 'ctrlpvim/ctrlp.vim'
-" Decrease reliance on single-key navigation.
-Plugin 'takac/vim-hardtime'
-" Highlight trailing whitespace.
-Plugin 'bronson/vim-trailing-whitespace'
-" Ag in Vim
-Plugin 'rking/ag.vim'
-" distraction-free writing
-Plugin 'junegunn/goyo.vim'
-" paragraph highlighting for the above
-Plugin 'junegunn/limelight.vim'
+Plug 'mhinz/vim-startify'
+
+" --- C/C++
+" Enhanced C++ highlighting.
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
+" Extra highlighting of typedefs, enumerations etc (based on ctags)
+Plug 'vim-scripts/TagHighlight', { 'for': ['c', 'cpp'] }
+
+" --- Rust
+" rust.vim
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+" TOML syntax
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+" Racer support for Vim
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+
+" --- Python
+" Vim uses current virtualenv.
+Plug 'jmcantrell/vim-virtualenv'
+
+" --- Javascript
 " Syntax highlighting for JSON in Vim
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json', { 'for': 'json' }
 " ES6 support
-Plugin 'isRuslan/vim-es6'
+Plug 'isRuslan/vim-es6', { 'for': 'javascript' }
+
+" --- txt
+" distraction-free writing
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+" paragraph highlighting for the above
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+
+" Reveal the current file in the OS X Finder.
+Plug 'henrik/vim-reveal-in-finder'
+
+" Vim script for text filtering and alignment
+Plug 'godlygeek/tabular'
+
+" Ag in Vim
+Plug 'rking/ag.vim'
+" Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Decrease reliance on single-key navigation.
+Plug 'takac/vim-hardtime'
+" Highlight trailing whitespace.
+Plug 'bronson/vim-trailing-whitespace'
+
+
 " Better Python syntax: http://www.vim.org/scripts/script.php?script_id=790
 " [in ~/.vim/syntax folder]
 "
 " Colour schemes
-Plugin 'sickill/vim-monokai'
-Plugin 'morhetz/gruvbox.git'
-Plugin 'rakr/vim-one'
+Plug 'sickill/vim-monokai'
+Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
 
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()            " required
 
 " NeoVim Python hosts
-let g:python_host_prog=$BREW_HOME.'/bin/python2'
+" let g:python_host_prog=$BREW_HOME.'/bin/python2'
 let g:python3_host_prog=$BREW_HOME.'/bin/python3'
 
 " ==============================================================================
@@ -239,45 +239,30 @@ let g:ascii = [
 \ "     <CC C><C CC CCC $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ CCCC>' .c;`<C> C <C",
 \]
 let g:startify_custom_header = g:ascii
-<<<<<<< HEAD
-let g:startify_list_order = ['bookmarks', 'sessions']
-=======
 let g:startify_list_order = ['files', 'bookmarks', 'sessions']
->>>>>>> 91a7ac4b880cfae9ebb88f38d0180bb04ae062c5
 let g:startify_files_number = 5
 
 
-" ==== Statusline / Syntastic ==================================================
+" ==== Statusline / ALE ========================================================
 if has('statusline')
     set laststatus=2                " last window always has a status line
 endif
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-let g:syntastic_check_on_open = 1   " check files when opened
-let g:syntastic_check_on_wq = 0     " don't check files on close
-                                    " using gcc and cppcheck on C
-let g:syntastic_c_checkers = ['gcc', 'cppcheck']
-                                    " clang++ is our cxx compiler
-let g:syntastic_cpp_compiler = 'clang++'
-                                    " and we always use:
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-                                    " check python with pylint
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = [ '--rcfile=~/.pylintrc' ]
+let g:airline#extensions#ale#enabled = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'python': ['pylint'],
+\}
 
 " ==== YouCompleteMe ===========================================================
 " Path to rust source, which should be the same as the rust-src component
 " path.
-let g:ycm_rust_src_path = $HOME.'/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
+let g:ycm_rust_src_path = $YCM_RUST_SRC_PATH
 " global YCM config
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 " let g:ycm_key_invoke_completion = '<C-whatever>'
-
-" ==== flake8 ==================================================================
-let g:flake8_cmd=$HOME.'/.virtualenvs/core/bin/flake8'
 
 " ==== vim-cpp-enhanced-highlight ==============================================
 let g:cpp_class_scope_highlight = 1
