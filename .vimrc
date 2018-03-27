@@ -10,7 +10,7 @@ Plug 'vim-airline/vim-airline-themes'
 " YouCompleteMe - A code-completion engine for Vim
 Plug 'Valloric/YouCompleteMe'
 " NERDTree
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NerdTree'] }
+Plug 'scrooloose/nerdtree'
 " Asynchronous Lint Engine
 Plug 'w0rp/ale'
 " The ultimate undo history visualizer for VIM
