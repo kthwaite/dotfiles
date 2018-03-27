@@ -20,6 +20,10 @@ release/
 __pycache__/
 *.pyc
 
+# rust
+**/*.rs.bk
+/target/
+
 # Packages
 *.7z
 *.dmg
