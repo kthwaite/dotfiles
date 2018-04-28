@@ -259,7 +259,7 @@ let g:ale_linters = {
 " ==== YouCompleteMe ===========================================================
 " Path to rust source, which should be the same as the rust-src component
 " path.
-let g:ycm_rust_src_path = $YCM_RUST_SRC_PATH
+let g:ycm_rust_src_path = "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
 " global YCM config
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 " let g:ycm_key_invoke_completion = '<C-whatever>'
