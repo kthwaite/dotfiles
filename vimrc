@@ -75,6 +75,7 @@ Plug 'sickill/vim-monokai'
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
+Plug 'arcticicestudio/nord-vim'
 
 
 call plug#end()            " required
