@@ -18,6 +18,9 @@ export LC_ALL='en_GB.UTF-8'
 #==== Aliases ==================================================================
 #
 
+alias vim=nvim
+alias vi=nvim
+
 alias l='exa -la --group-directories-first'
 alias piu='pip install --upgrade'
 alias pipold='pip list --outdated'
