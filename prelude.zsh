@@ -27,6 +27,10 @@ alias diskuse='df --si | sort -hk3'
 #==== Functions ================================================================
 #
 
+function linetrim() {
+    sed -e :a -e '/./,$!d;/^\n*$/{$d;N;};/\n$/ba' $@
+}
+
 # ---- version control
 # update all git and/or hg repos in the current directory
 function pull-all() {
