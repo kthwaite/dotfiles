@@ -33,6 +33,8 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 " Racer support for Vim
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+" Pest PEG grammar syntax support
+Plug 'pest-parser/pest.vim'
 
 " --- Python
 " Vim uses current virtualenv.
@@ -66,6 +68,7 @@ Plug 'takac/vim-hardtime'
 " Highlight trailing whitespace.
 Plug 'bronson/vim-trailing-whitespace'
 
+Plug 'neo4j-contrib/cypher-vim-syntax'
 
 " Better Python syntax: http://www.vim.org/scripts/script.php?script_id=790
 " [in ~/.vim/syntax folder]
