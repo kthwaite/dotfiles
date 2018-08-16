@@ -19,6 +19,7 @@ export LC_ALL='en_GB.UTF-8'
 #
 
 alias l='exa -la --group-directories-first'
+alias lg='exa -la --group-directories-first --git'
 alias piu='pip install --upgrade'
 alias pipold='pip list --outdated'
 alias diskuse='df --si | sort -hk3'
