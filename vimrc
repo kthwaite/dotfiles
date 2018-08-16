@@ -33,11 +33,15 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 " Racer support for Vim
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+<<<<<<< HEAD
 " Syntax highlighting for Dyon
 Plug 'thyrgle/vim-dyon'
 " Syntax highlighting for gluon
 Plug 'gluon-lang/vim-gluon'
 " Syntax highlighting for pest PEG
+=======
+" Pest PEG grammar syntax support
+>>>>>>> 91a97423b274142626f17350bf4e1f5bf9e73526
 Plug 'pest-parser/pest.vim'
 
 " --- Python
@@ -78,8 +82,12 @@ Plug 'takac/vim-hardtime'
 " Highlight trailing whitespace.
 Plug 'bronson/vim-trailing-whitespace'
 
+<<<<<<< HEAD
 " Override awful default YAML syntax highlighting
 Plug 'stephpy/vim-yaml'
+=======
+Plug 'neo4j-contrib/cypher-vim-syntax'
+>>>>>>> 91a97423b274142626f17350bf4e1f5bf9e73526
 
 "
 " Colour schemes
@@ -161,6 +169,9 @@ au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.cls set filetype=vb
                                 " use xmllint to reindent XML when using 'gg=G'
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
+" YAML is two-spaced by default
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 
 " ==== UI ======================================================================
