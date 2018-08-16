@@ -33,8 +33,6 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 " Racer support for Vim
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-<<<<<<< HEAD
-<<<<<<< HEAD
 " Syntax highlighting for Dyon
 Plug 'thyrgle/vim-dyon'
 " Syntax highlighting for gluon
