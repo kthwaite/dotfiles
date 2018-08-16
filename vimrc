@@ -78,16 +78,8 @@ Plug 'takac/vim-hardtime'
 " Highlight trailing whitespace.
 Plug 'bronson/vim-trailing-whitespace'
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 " Override awful default YAML syntax highlighting
 Plug 'stephpy/vim-yaml'
-=======
-Plug 'neo4j-contrib/cypher-vim-syntax'
->>>>>>> 91a97423b274142626f17350bf4e1f5bf9e73526
-=======
-Plug 'neo4j-contrib/cypher-vim-syntax'
->>>>>>> 91a97423b274142626f17350bf4e1f5bf9e73526
 
 "
 " Colour schemes
