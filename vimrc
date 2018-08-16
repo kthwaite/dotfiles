@@ -33,6 +33,12 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 " Racer support for Vim
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+" Syntax highlighting for Dyon
+Plug 'thyrgle/vim-dyon'
+" Syntax highlighting for gluon
+Plug 'gluon-lang/vim-gluon'
+" Syntax highlighting for pest PEG
+Plug 'pest-parser/pest.vim'
 
 " --- Python
 " Vim uses current virtualenv.
@@ -43,6 +49,12 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'elzr/vim-json', { 'for': 'json' }
 " ES6 support
 Plug 'isRuslan/vim-es6', { 'for': 'javascript' }
+" Javascript
+Plug 'pangloss/vim-javascript'
+" JSX
+Plug 'mxw/vim-jsx'
+" Typescript
+Plug 'leafgarland/typescript-vim'
 
 " --- txt
 " distraction-free writing
@@ -66,9 +78,9 @@ Plug 'takac/vim-hardtime'
 " Highlight trailing whitespace.
 Plug 'bronson/vim-trailing-whitespace'
 
+" Override awful default YAML syntax highlighting
+Plug 'stephpy/vim-yaml'
 
-" Better Python syntax: http://www.vim.org/scripts/script.php?script_id=790
-" [in ~/.vim/syntax folder]
 "
 " Colour schemes
 Plug 'sickill/vim-monokai'
@@ -87,7 +99,7 @@ let g:python3_host_prog='python3'
 " ==============================================================================
 " ==== Setup ===================================================================
 set shell=zsh\ -l               " just so we're clear, vim
-set background=dark             " against a dark background
+"set background=dark             " against a dark background
 syntax on		                " syntax highlighting
 set mouse=a		                " enable mouse
 set termguicolors               " true colour scheme in the terminal
@@ -260,7 +272,7 @@ let g:ale_linters = {
 " ==== YouCompleteMe ===========================================================
 " Path to rust source, which should be the same as the rust-src component
 " path.
-let g:ycm_rust_src_path = $YCM_RUST_SRC_PATH
+let g:ycm_rust_src_path = '$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
 " global YCM config
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 " let g:ycm_key_invoke_completion = '<C-whatever>'
