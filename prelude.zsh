@@ -8,11 +8,19 @@ bindkey -e
 #==== Env vars =================================================================
 #
 
+# -- language & locale
+export LC_ALL='en_GB.UTF-8'
+export LC_LANG='en_GB.UTF-8'
+export LANG='en_GB.UTF-8'
+
+# -- editor
 export EDITOR='nvim'
 export VISUAL='nvim'
 export VISUDO='nvim'
+export SUDO_EDITOR='nvim'
+
+# -- pager
 export PAGER='less'
-export LC_ALL='en_GB.UTF-8'
 
 
 #==== Aliases ==================================================================
