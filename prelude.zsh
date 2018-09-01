@@ -8,22 +8,45 @@ bindkey -e
 #==== Env vars =================================================================
 #
 
+# -- language & locale
+export LC_ALL='en_GB.UTF-8'
+export LC_LANG='en_GB.UTF-8'
+export LANG='en_GB.UTF-8'
+
+# -- editor
 export EDITOR='nvim'
 export VISUAL='nvim'
 export VISUDO='nvim'
+export SUDO_EDITOR='nvim'
+
+# -- pager
 export PAGER='less'
-export LC_ALL='en_GB.UTF-8'
 
 
 #==== Aliases ==================================================================
 #
 
-alias l='exa -la --group-directories-first'
+# -- exa
+# default
+alias l="exa -alg --group-directories-first"
+# as above with git status
 alias lg='exa -la --group-directories-first --git'
+# invoke regular `ls`
+alias ll="ls -alh"
+# list directory tree from cwd
+alias dt="exa -algbT"
+# as above with git status
+alias dtg="exa -algbT --git"
+
+# -- pip
 alias piu='pip install --upgrade'
 alias pipold='pip list --outdated'
 alias diskuse='df --si | sort -hk3'
 
+# -- git-log
+alias git-log-smp='git log --graph --pretty=oneline --abbrev-commit'
+alias git-log-pty='git log --oneline --decorate --all --graph'
+alias git-log-mn="git log --pretty=format:'• %C(bold yellow)%h%C(reset) %C(red)%an%C(reset) %C(blue)%ai%C(reset) %C(bold red)%D%C(reset) | %s'"
 
 #==== Functions ================================================================
 #
