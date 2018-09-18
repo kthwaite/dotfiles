@@ -36,7 +36,7 @@ alias ll="ls -alh"
 # list directory tree from cwd
 alias dt="exa -algbT"
 # as above with git status
-alias dtg="exa -algbT --git"
+alias dtg="exa -algbT --git --git-ignore -I '.git'"
 
 # -- pip
 alias piu='pip install --upgrade'
