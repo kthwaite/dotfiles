@@ -89,3 +89,10 @@ function list-repos() {
 function npm-exec {
    $(npm bin)/$@
 }
+
+# ---- misc
+gdrivewget() {
+    readonly local ID=${1}
+    readonly local OUT=${0}
+    wget --no-check-certificate -r "https://docs.google.com/uc?export=download&id=${ID}" -O ${OUT}
+}
