@@ -64,8 +64,6 @@ Plug 'henrik/vim-reveal-in-finder'
 " Vim script for text filtering and alignment
 Plug 'godlygeek/tabular'
 
-" Ag in Vim
-Plug 'rking/ag.vim'
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -133,14 +131,6 @@ set smartcase                   " search case-sensitive when uppercase character
 nnoremap / /\v
                                 " magic by default
 cnoremap %s/ %s/\v
-
-" ---- ag.vim ------------------------------------------------------------------
-                                " alt-0 (º) is remapped to find all instances
-                                " of the word under the cursor within the
-                                " current working directory
-nmap º :Ag <c-r>=expand("<cword>")<cr><cr>
-                                " space-/ is remapped to 'Ag'
-nnoremap <space>/ :Ag 
 
 
 " ==== Formatting ==============================================================
