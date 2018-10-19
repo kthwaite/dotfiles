@@ -57,21 +57,16 @@ Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 " paragraph highlighting for the above
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-
 " Reveal the current file in the OS X Finder.
 Plug 'henrik/vim-reveal-in-finder'
-
 " Vim script for text filtering and alignment
 Plug 'godlygeek/tabular'
-
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 Plug 'ctrlpvim/ctrlp.vim'
-
 " Decrease reliance on single-key navigation.
 Plug 'takac/vim-hardtime'
 " Highlight trailing whitespace.
 Plug 'bronson/vim-trailing-whitespace'
-
 " Override awful default YAML syntax highlighting
 Plug 'stephpy/vim-yaml'
 
