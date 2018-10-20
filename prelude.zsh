@@ -50,7 +50,6 @@ alias ll="ls -alh"
 # -- pip
 alias piu='pip install --upgrade'
 alias pipold='pip list --outdated'
-alias diskuse='df --si | sort -hk3'
 
 # -- git-log
 alias git-log-smp='git log --graph --pretty=oneline --abbrev-commit'
