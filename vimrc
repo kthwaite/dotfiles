@@ -31,8 +31,6 @@ Plug 'vim-scripts/TagHighlight', { 'for': ['c', 'cpp'] }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " TOML syntax
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-" Racer support for Vim
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 " Pest PEG grammar syntax support
 Plug 'pest-parser/pest.vim'
 
@@ -256,7 +254,7 @@ let g:ale_linters = {
 " ==== YouCompleteMe ===========================================================
 " Path to rust source, which should be the same as the rust-src component
 " path.
-let g:ycm_rust_src_path = '$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
+let g:ycm_rust_src_path = "$RUST_SRC_PATH"
 " global YCM config
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 " let g:ycm_key_invoke_completion = '<C-whatever>'

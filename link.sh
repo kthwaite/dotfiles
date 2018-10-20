@@ -2,6 +2,7 @@
 # Symlink dotfiles into ~/
 
 set -o errexit
+set -o nounset
 
 readonly symlinkable=(gitignore_global pylintrc tmux.conf vimrc)
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
@@ -19,6 +20,12 @@ do
   case ${key} in
     -f|--force)
     FORCE=true
+    shift
+    ;;
+  esac
+  case ${key} in
+    -v|--verbose)
+    set -o xtrace
     shift
     ;;
   esac
