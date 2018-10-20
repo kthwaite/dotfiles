@@ -18,6 +18,8 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export VISUDO='nvim'
 export SUDO_EDITOR='nvim'
+alias vi='nvim'
+alias vim='nvim'
 
 # -- pager
 export PAGER='less'
@@ -28,6 +30,7 @@ export RUST_SRC_PATH="${RUST_ROOT}/lib/rustlib/src/rust/src/"
 
 #==== Aliases ==================================================================
 #
+alias diskuse='df --si | sort -hk3'
 
 # -- exa
 # default
