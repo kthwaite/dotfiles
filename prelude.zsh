@@ -55,6 +55,8 @@ function linetrim() {
     sed -e :a -e '/./,$!d;/^\n*$/{$d;N;};/\n$/ba' $@
 }
 
+alias what-javas='/usr/libexec/java_home -V'
+
 # ---- version control
 # update all git and/or hg repos in the current directory
 function pull-all() {
