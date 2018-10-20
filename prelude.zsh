@@ -62,10 +62,22 @@ alias what-javas='/usr/libexec/java_home -V'
 #==== Functions ================================================================
 #
 
+# ---- text manipulation
+#
 linetrim() {
     sed -e :a -e '/./,$!d;/^\n*$/{$d;N;};/\n$/ba' $@
 }
 
+# ---- networking
+# randomise MAC address
+randmac() {
+    local OLDMAC=$(ifconfig en0 | ag ether)
+    local NEWMAC=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/:$//g')
+    echo "MAC address: ${OLDMAC}"
+    echo "Changing MAC address to ${NEWMAC}..."
+    sudo ifconfig en0 ether ${NEWMAC}
+    ifconfig en0 | grep ether
+}
 
 # ---- version control
 # update all git and/or hg repos in the current directory
@@ -99,6 +111,18 @@ list-repos() {
 
 repo-url() {
     cat .git/config | sed '/url/q;d' | sed 's/	url = //;'
+}
+
+# ---- ffmpeg
+# concatenate WMV files
+wmvconcat() {
+    local new_file
+    if [ -z "$2" ]; then
+        new_file="$1";
+    else
+        new_file="$2";
+    fi
+    ls "$1" * | while read line; do echo file \'$line\'; done | ffmpeg -f concat -i - -c copy "$new_file".wmv
 }
 
 # ---- node.js
