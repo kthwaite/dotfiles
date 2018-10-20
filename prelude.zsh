@@ -59,16 +59,16 @@ alias what-javas='/usr/libexec/java_home -V'
 
 # ---- version control
 # update all git and/or hg repos in the current directory
-function pull-all() {
+function pull-all {
     for dir in */; do
-        cd $dir
-        echo "Checking $dir..."
+        cd ${dir}
+        echo "Checking ${dir}..."
         if [ -d ".git/" ]; then
             git pull
         elif [ -d ".hg/" ]; then
             hg pull && hg update
         else
-            echo "    $dir is not a git or mercurial repo, skipping..."
+            echo "    ${dir} is not a git or mercurial repo, skipping..."
         fi
         cd ..
     done
