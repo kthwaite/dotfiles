@@ -54,14 +54,14 @@ alias what-javas='/usr/libexec/java_home -V'
 #==== Functions ================================================================
 #
 
-function linetrim() {
+linetrim() {
     sed -e :a -e '/./,$!d;/^\n*$/{$d;N;};/\n$/ba' $@
 }
 
 
 # ---- version control
 # update all git and/or hg repos in the current directory
-function pull-all {
+pull-all() {
     for dir in */; do
         cd ${dir}
         echo "Checking ${dir}..."
@@ -77,7 +77,7 @@ function pull-all {
 }
 
 # list all git and hg repos in the current directory, prefixed by 'hg' or 'git'
-function list-repos() {
+list-repos() {
     for dir in */; do
         cd $dir
         if [ -d ".git/" ]; then
@@ -89,12 +89,12 @@ function list-repos() {
     done
 }
 
-function repo-url {
+repo-url() {
     cat .git/config | sed '/url/q;d' | sed 's/	url = //;'
 }
 
 # ---- node.js
-function npm-exec {
+npm-exec() {
    $(npm bin)/$@
 }
 
