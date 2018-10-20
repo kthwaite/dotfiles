@@ -48,6 +48,9 @@ alias git-log-smp='git log --graph --pretty=oneline --abbrev-commit'
 alias git-log-pty='git log --oneline --decorate --all --graph'
 alias git-log-mn="git log --pretty=format:'• %C(bold yellow)%h%C(reset) %C(red)%an%C(reset) %C(blue)%ai%C(reset) %C(bold red)%D%C(reset) | %s'"
 
+# -- java
+alias what-javas='/usr/libexec/java_home -V'
+
 #==== Functions ================================================================
 #
 
@@ -55,7 +58,6 @@ function linetrim() {
     sed -e :a -e '/./,$!d;/^\n*$/{$d;N;};/\n$/ba' $@
 }
 
-alias what-javas='/usr/libexec/java_home -V'
 
 # ---- version control
 # update all git and/or hg repos in the current directory
