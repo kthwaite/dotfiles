@@ -35,14 +35,17 @@ alias diskuse='df --si | sort -hk3'
 # -- exa
 # default
 alias l="exa -alg --group-directories-first"
-# as above with git status
+# as `l` but ordered by modified-time
+alias lh='exa -la --group-directories-first -s modified'
+# as `l` with git status
 alias lg='exa -la --group-directories-first --git'
-# invoke regular `ls`
-alias ll="ls -alh"
 # list directory tree from cwd
 alias dt="exa -algbT"
-# as above with git status
+# as `dt` with git status
 alias dtg="exa -algbT --git --git-ignore -I '.git'"
+# -- ls
+# invoke regular `ls`
+alias ll="ls -alh"
 
 # -- pip
 alias piu='pip install --upgrade'
