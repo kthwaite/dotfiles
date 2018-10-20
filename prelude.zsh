@@ -22,6 +22,9 @@ export SUDO_EDITOR='nvim'
 # -- pager
 export PAGER='less'
 
+# -- rust
+export RUST_ROOT="$(rustc --print sysroot)"
+export RUST_SRC_PATH="${RUST_ROOT}/lib/rustlib/src/rust/src/"
 
 #==== Aliases ==================================================================
 #
