@@ -85,6 +85,10 @@ function list-repos() {
     done
 }
 
+function repo-url {
+    cat .git/config | sed '/url/q;d' | sed 's/	url = //;'
+}
+
 # ---- node.js
 function npm-exec {
    $(npm bin)/$@
