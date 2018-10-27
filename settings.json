@@ -1,0 +1,20 @@
+{
+    "telemetry.enableTelemetry": false,
+    "workbench.colorTheme": "One Monokai",
+    "editor.fontFamily": "'PragmataPro', Menlo, Monaco, 'Courier New', monospace",
+    "workbench.statusBar.feedback.visible": false,
+    "editor.fontLigatures": true,
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "python.venvFolders": [
+        "envs",
+        ".pyenv",
+        ".direnv",
+        ".virtualenvs"
+    ],
+    "python.venvPath": "~/.virtualenvs",
+    "python.pythonPath": "/Users/cthwaite/.virtualenvs/core/bin/python",
+    "explorer.confirmDragAndDrop": false,
+    "gitlens.mode.active": "zen"
+}
