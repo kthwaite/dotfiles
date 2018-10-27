@@ -31,8 +31,8 @@ Plug 'vim-scripts/TagHighlight', { 'for': ['c', 'cpp'] }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " TOML syntax
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-" Racer support for Vim
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+" Pest PEG grammar syntax support
+Plug 'pest-parser/pest.vim'
 
 " --- Python
 " Vim uses current virtualenv.
@@ -43,32 +43,31 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'elzr/vim-json', { 'for': 'json' }
 " ES6 support
 Plug 'isRuslan/vim-es6', { 'for': 'javascript' }
+" Javascript
+Plug 'pangloss/vim-javascript'
+" JSX
+Plug 'mxw/vim-jsx'
+" Typescript
+Plug 'leafgarland/typescript-vim'
 
 " --- txt
 " distraction-free writing
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 " paragraph highlighting for the above
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-
 " Reveal the current file in the OS X Finder.
 Plug 'henrik/vim-reveal-in-finder'
-
 " Vim script for text filtering and alignment
 Plug 'godlygeek/tabular'
-
-" Ag in Vim
-Plug 'rking/ag.vim'
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 Plug 'ctrlpvim/ctrlp.vim'
-
 " Decrease reliance on single-key navigation.
 Plug 'takac/vim-hardtime'
 " Highlight trailing whitespace.
 Plug 'bronson/vim-trailing-whitespace'
+" Override awful default YAML syntax highlighting
+Plug 'stephpy/vim-yaml'
 
-
-" Better Python syntax: http://www.vim.org/scripts/script.php?script_id=790
-" [in ~/.vim/syntax folder]
 "
 " Colour schemes
 Plug 'sickill/vim-monokai'
@@ -87,7 +86,7 @@ let g:python3_host_prog='python3'
 " ==============================================================================
 " ==== Setup ===================================================================
 set shell=zsh\ -l               " just so we're clear, vim
-set background=dark             " against a dark background
+"set background=dark             " against a dark background
 syntax on		                " syntax highlighting
 set mouse=a		                " enable mouse
 set termguicolors               " true colour scheme in the terminal
@@ -126,14 +125,6 @@ nnoremap / /\v
                                 " magic by default
 cnoremap %s/ %s/\v
 
-" ---- ag.vim ------------------------------------------------------------------
-                                " alt-0 (º) is remapped to find all instances
-                                " of the word under the cursor within the
-                                " current working directory
-nmap º :Ag <c-r>=expand("<cword>")<cr><cr>
-                                " space-/ is remapped to 'Ag'
-nnoremap <space>/ :Ag 
-
 
 " ==== Formatting ==============================================================
 set wrap                        " wrap lines
@@ -149,6 +140,9 @@ au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.cls set filetype=vb
                                 " use xmllint to reindent XML when using 'gg=G'
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
+" YAML is two-spaced by default
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 
 " ==== UI ======================================================================
@@ -260,7 +254,7 @@ let g:ale_linters = {
 " ==== YouCompleteMe ===========================================================
 " Path to rust source, which should be the same as the rust-src component
 " path.
-let g:ycm_rust_src_path = "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
+let g:ycm_rust_src_path = "$RUST_SRC_PATH"
 " global YCM config
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 " let g:ycm_key_invoke_completion = '<C-whatever>'
