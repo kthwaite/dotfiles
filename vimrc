@@ -7,8 +7,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" YouCompleteMe - A code-completion engine for Vim
-Plug 'Valloric/YouCompleteMe'
+" deoplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+Plug 'racer-rust/vim-racer'
+Plug 'zchee/deoplete-jedi'
 " NERDTree
 Plug 'scrooloose/nerdtree'
 " Asynchronous Lint Engine
@@ -37,6 +40,8 @@ Plug 'pest-parser/pest.vim'
 " --- Python
 " Vim uses current virtualenv.
 Plug 'jmcantrell/vim-virtualenv'
+" Black formatting
+Plug 'ambv/black'
 
 " --- Javascript
 " Syntax highlighting for JSON in Vim
@@ -67,6 +72,8 @@ Plug 'takac/vim-hardtime'
 Plug 'bronson/vim-trailing-whitespace'
 " Override awful default YAML syntax highlighting
 Plug 'stephpy/vim-yaml'
+" Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 "
 " Colour schemes
@@ -160,7 +167,7 @@ set showmatch                   " show search matches
 set wildmenu                    " show list for autocomplete
 set wildmode=list:longest,full  " list all matches and complete
 set columns=80                  " wrap text at 80 columns
-set colorcolumn=81,161          " indicate col80, col161
+set colorcolumn=88,161          " indicate col80, col161
 set nofoldenable                " automatic code folding is the devil's work
 
 " let macvim_skip_colorscheme=1
@@ -249,15 +256,22 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['pylint'],
+\   'typescript': ['tsserver'],
 \}
+let g:ale_linters_ignore = {'typescript': ['tslint', 'eslint']}
 
-" ==== YouCompleteMe ===========================================================
-" Path to rust source, which should be the same as the rust-src component
-" path.
-let g:ycm_rust_src_path = "$RUST_SRC_PATH"
-" global YCM config
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
-" let g:ycm_key_invoke_completion = '<C-whatever>'
+" ==== NERDTree ================================================================
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+
+" ==== deoplete =
+" tab-completion
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+set hidden
+let g:racer_cmd = "$HOME/.cargo/bin/racer"
 
 " ==== vim-cpp-enhanced-highlight ==============================================
 let g:cpp_class_scope_highlight = 1
