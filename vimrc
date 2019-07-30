@@ -23,6 +23,12 @@ Plug 'airblade/vim-gitgutter'
 " Enhanced splash screen with RUFs.
 Plug 'mhinz/vim-startify'
 
+" --- Search
+" Search with rg
+Plug 'jremmen/vim-ripgrep'
+" Search with fzf
+Plug 'junegunn/fzf.vim'
+
 " --- C/C++
 " Enhanced C++ highlighting.
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
