@@ -308,3 +308,8 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " ==== vim-json ================================================================
 let g:vim_json_syntax_conceal = 0
+
+" ==== vim-prettier ============================================================
+" " number of spaces per indentation level
+" Prettier default: 2
+let g:prettier#config#tab_width = 4
