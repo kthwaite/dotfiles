@@ -54,6 +54,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 " Typescript
 Plug 'leafgarland/typescript-vim'
+" Prettier
+Plug 'prettier/vim-prettier'
 
 " --- txt
 " distraction-free writing
