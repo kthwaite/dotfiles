@@ -271,7 +271,7 @@ set statusline+=%*
 let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'python': ['pylint'],
+\   'python': ['flake8'],
 \   'typescript': ['tsserver'],
 \}
 let g:ale_linters_ignore = {'typescript': ['tslint', 'eslint']}
@@ -282,7 +282,7 @@ let NERDTreeShowLineNumbers=1
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
 
-" ==== deoplete =
+" ==== deoplete ================================================================
 " tab-completion
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
