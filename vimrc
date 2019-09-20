@@ -121,11 +121,6 @@ set ruler                       " display cursor position
                                 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
 
-" remap split navigation
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
 
 " current directory is always window-local
 autocmd BufEnter * lcd %:p:h
@@ -135,10 +130,6 @@ set incsearch                   " show matches while you type
 set hlsearch                    " highlight matches
 set ignorecase                  " search case insensitive
 set smartcase                   " search case-sensitive when uppercase characters appear in search
-                                " magic by default
-nnoremap / /\v
-                                " magic by default
-cnoremap %s/ %s/\v
 
 
 " ==== Formatting ==============================================================
@@ -202,6 +193,23 @@ else
         set t_Co=256            " 256 colour
     endif
 endif
+
+
+" ==== keymap ==================================================================
+let mapleader = " "
+nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+inoremap jk <esc>
+inoremap <esc> <nop>
+" remap split navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+                                " magic by default
+nnoremap / /\v
+                                " magic by default
+cnoremap %s/ %s/\v
 
 
 " ==== Airline =================================================================
