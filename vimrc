@@ -105,7 +105,7 @@ set shell=zsh\ -l               " just so we're clear, vim
 syntax on		                " syntax highlighting
 set mouse=a		                " enable mouse
 set termguicolors               " true colour scheme in the terminal
-colorscheme flatland-monokai
+colorscheme monokai
 set mousehide 		            " hide mouse cursor while typing
 set encoding=utf-8              " default encoding is utf-8
 scriptencoding utf-8            " script encoding is utf-8
@@ -119,6 +119,8 @@ set nobackup                    " no backup files
 set bs=indent,eol,start         " backspace over everything!
 set ruler                       " display cursor position
 set lazyredraw                  " faster macro invocation
+set title                       " set window title
+set titlestring=%t              " ibid
 
                                 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
@@ -167,7 +169,6 @@ set virtualedit=onemore         " cursor after EOL
 set showmatch                   " show search matches
 set wildmenu                    " show list for autocomplete
 set wildmode=list:longest,full  " list all matches and complete
-set columns=80                  " wrap text at 80 columns
 set colorcolumn=88,161          " indicate col80, col161
 set nofoldenable                " automatic code folding is the devil's work
 
