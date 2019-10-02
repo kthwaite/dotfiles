@@ -118,6 +118,8 @@ set noswapfile                  " no swapfile
 set nobackup                    " no backup files
 set bs=indent,eol,start         " backspace over everything!
 set ruler                       " display cursor position
+set lazyredraw                  " faster macro invocation
+
                                 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
 
