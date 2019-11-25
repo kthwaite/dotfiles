@@ -15,6 +15,7 @@
 # Build Folders
 build/
 release/
+target/
 
 # python
 __pycache__/
