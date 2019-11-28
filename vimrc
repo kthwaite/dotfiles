@@ -95,8 +95,7 @@ Plug 'arcticicestudio/nord-vim'
 call plug#end()            " required
 
 " NeoVim Python hosts
-" let g:python_host_prog=$BREW_HOME.'/bin/python2'
-let g:python3_host_prog='python3'
+let g:python3_host_prog='python'
 
 " ==============================================================================
 " ==== Setup ===================================================================
