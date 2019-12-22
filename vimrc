@@ -199,7 +199,13 @@ endif
 
 " ==== keymap ==================================================================
 let mapleader = " "
-nnoremap <leader>ev :e $MYVIMRC<cr>
+if has('nvim')
+    if has('win32')
+        nnoremap <leader>ev :e ~/_vimrc<cr>
+    else
+        nnoremap <leader>ev :e ~/.vimrc<cr>
+    endif
+endif
 nnoremap <leader>sv :source $MYVIMRC<cr>
 inoremap jk <esc>
 inoremap <esc> <nop>
