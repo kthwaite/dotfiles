@@ -10,11 +10,11 @@ main() {
         exit 255
     fi
     nvim --headless -c "call mkdir(stdpath('config'), 'p')|exe 'edit '.stdpath('config').'/init.vim'|wq"
-    cat <<EOT >> $HOME/.config/nvim/init.vim
+    cat <<EOT >> "$HOME/.config/nvim/init.vim"
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 EOT
 }
 
-main $@
+main "$@"
