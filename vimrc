@@ -45,9 +45,9 @@ Plug 'pest-parser/pest.vim'
 
 " --- Python
 " Vim uses current virtualenv.
-Plug 'jmcantrell/vim-virtualenv'
+Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 " Black formatting
-Plug 'ambv/black'
+Plug 'ambv/black', {'for': 'python'}
 
 " --- Javascript
 " Syntax highlighting for JSON in Vim
