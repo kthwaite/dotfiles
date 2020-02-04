@@ -30,12 +30,16 @@ if [[ -z "$LANG" ]]; then
 fi
 
 # -- editor
-export EDITOR='nvim'
-export VISUAL='nvim'
-export VISUDO='nvim'
-export SUDO_EDITOR='nvim'
-alias vi='nvim'
-alias vim='nvim'
+VIM=vim
+if [[ -x "$(command -v nvim)" ]]; then
+    VIM=neovim
+fi
+export EDITOR=$VIM
+export VISUAL=$VIM
+export VISUDO=$VIM
+export SUDO_EDITOR=$VIM
+alias vi=$VIM
+alias vim=$VIM
 
 # -- pager
 export PAGER='less'

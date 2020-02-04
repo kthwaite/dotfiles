@@ -2,7 +2,7 @@ setopt PROMPT_SUBST
 rprompt_git() {
     # inside_git_repo="$(git rev-parse --is-inside-work-tree 2>/dev/null)"
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        local -r ret="%B%F{2}$(git branch --show-current)%f%b"
+        local -r ret="%B%F{2}$(git branch --show-current 2>&1)%f%b"
         print "$ret"
     fi
 }
