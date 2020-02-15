@@ -45,7 +45,7 @@ Plug 'cespare/vim-toml', { 'for': 'toml' }
 " Vim uses current virtualenv.
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 " Black formatting
-Plug 'ambv/black', { 'for': 'python' }
+Plug 'ambv/black', {'for': 'python'}
 
 " --- Javascript
 " Syntax highlighting for JSON in Vim
