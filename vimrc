@@ -7,11 +7,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" deoplete
+" Enable for startup time testing
+" Plug 'tweekmonster/startuptime.vim'
+
+"" Plug 'tpope/vim-fugitive'
+
+" deoplete async completion framework
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
-Plug 'racer-rust/vim-racer'
-Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 " NERDTree
 Plug 'scrooloose/nerdtree'
 " Asynchronous Lint Engine
@@ -40,8 +44,8 @@ Plug 'vim-scripts/TagHighlight', { 'for': ['c', 'cpp'] }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " TOML syntax
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-" Pest PEG grammar syntax support
-Plug 'pest-parser/pest.vim'
+" Racer langauge server plugin
+Plug 'racer-rust/vim-racer', { 'for': ['rust'] }
 
 " --- Python
 " Vim uses current virtualenv.
@@ -55,7 +59,7 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 " ES6 support
 Plug 'isRuslan/vim-es6', { 'for': 'javascript' }
 " Javascript
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 " JSX
 Plug 'mxw/vim-jsx'
 " Typescript
@@ -68,8 +72,6 @@ Plug 'prettier/vim-prettier'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 " paragraph highlighting for the above
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-" Reveal the current file in the OS X Finder.
-Plug 'henrik/vim-reveal-in-finder'
 " Vim script for text filtering and alignment
 Plug 'godlygeek/tabular'
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
@@ -89,7 +91,7 @@ Plug 'sickill/vim-monokai'
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'arcticicestudio/nord-vim', { 'branch': 'master' }
 
 
 call plug#end()            " required
@@ -121,9 +123,6 @@ set ruler                       " display cursor position
 set lazyredraw                  " faster macro invocation
 set title                       " set window title
 set titlestring=%t              " ibid
-
-                                " :W sudo saves the file
-command W w !sudo tee % > /dev/null
 
 
 " current directory is always window-local
@@ -213,6 +212,14 @@ noremap <C-l> <C-w>l
 nnoremap / /\v
                                 " magic by default
 cnoremap %s/ %s/\v
+
+" FZF insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+" FZF line search
+nnoremap <leader>l :Lines<cr>
+" FZF git changes search
+nnoremap <leader>g :GFiles?<cr>
 
 
 " ==== Airline =================================================================
