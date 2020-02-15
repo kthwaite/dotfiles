@@ -40,8 +40,15 @@ alias vim='nvim'
 # -- pager
 export PAGER='less'
 # Set the default Less options.
-# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
-# Remove -X and -F (exit if the content fits on one screen) to enable it.
+# -F exit if content fits on one screen
+# -g hilight only last match for searches
+# -i ignore case when searching
+# -M set prompt style
+# -R output 'raw' control characters
+# -S truncate long lines rather than wrapping
+# -w highlight first new line after forward-screen
+# -X disable termcap init/deinit for screen clearing
+# -z-4 set size of window
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # -- rust
