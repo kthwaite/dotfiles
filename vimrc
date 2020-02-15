@@ -40,14 +40,12 @@ Plug 'vim-scripts/TagHighlight', { 'for': ['c', 'cpp'] }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " TOML syntax
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-" Pest PEG grammar syntax support
-Plug 'pest-parser/pest.vim'
 
 " --- Python
 " Vim uses current virtualenv.
-Plug 'jmcantrell/vim-virtualenv'
+Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 " Black formatting
-Plug 'ambv/black'
+Plug 'ambv/black', { 'for': 'python' }
 
 " --- Javascript
 " Syntax highlighting for JSON in Vim
@@ -68,8 +66,6 @@ Plug 'prettier/vim-prettier'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 " paragraph highlighting for the above
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-" Reveal the current file in the OS X Finder.
-Plug 'henrik/vim-reveal-in-finder'
 " Vim script for text filtering and alignment
 Plug 'godlygeek/tabular'
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
