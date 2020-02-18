@@ -157,7 +157,18 @@ alias ll="ls -alh"
 
 # -- pip
 alias piu='python3 -m pip install --upgrade'
-alias pipold='python3 -m pip list --outdated'
+# -- venv
+function vvv() {
+    if [[ -v VIRTUAL_ENV ]]; then
+        deactivate
+    else
+        if [[ ! -d .venv ]]; then
+            python3 -m venv .venv $@
+        fi
+        source .venv/bin/activate
+    fi
+}
+
 
 # -- git-log
 alias git-log-smp='git log --graph --pretty=oneline --abbrev-commit'
