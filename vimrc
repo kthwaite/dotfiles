@@ -12,6 +12,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 Plug 'racer-rust/vim-racer'
 Plug 'zchee/deoplete-jedi'
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 " NERDTree
 Plug 'scrooloose/nerdtree'
 " Asynchronous Lint Engine
@@ -214,7 +215,7 @@ noremap <C-l> <C-w>l
 nnoremap / /\v
                                 " magic by default
 cnoremap %s/ %s/\v
-
+nnoremap <leader>af :ALEFix<cr>
 
 " ==== Airline =================================================================
 let g:airline_powerline_fonts=1
@@ -277,7 +278,13 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['flake8'],
 \   'typescript': ['tsserver'],
+\   'go': ['govet', 'gobuild'],
 \}
+let g:ale_fixers = {
+\   'go': ['gofmt', 'goimports'],
+\   'rust': ['rustfmt'],
+\}
+let g:ale_fix_on_save = 0
 let g:ale_linters_ignore = {'typescript': ['tslint', 'eslint']}
 
 " ==== NERDTree ================================================================
