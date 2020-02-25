@@ -67,6 +67,9 @@ Plug 'leafgarland/typescript-vim'
 " Prettier
 Plug 'prettier/vim-prettier'
 
+" --- go
+Plug 'deoplete-plugins/deoplete-go', {'for': 'go', 'do': 'make'}
+
 " --- txt
 " distraction-free writing
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
@@ -298,6 +301,9 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 set hidden
 let g:racer_cmd = "$HOME/.cargo/bin/racer"
+let g:deoplete#sources#go#gocode_binary = "$HOME/go/bin/gocode"
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
 
 " ==== vim-cpp-enhanced-highlight ==============================================
 let g:cpp_class_scope_highlight = 1
