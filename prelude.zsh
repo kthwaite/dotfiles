@@ -21,34 +21,24 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     }
 fi
 
-#
-# Language
-#
-
-if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
+# -- editor
+if [[ -x "$(command -v nvim)" ]]; then
+    export EDITOR='nvim'
+    alias vi='nvim'
+    alias vim='nvim'
+else
+    export EDITOR='vim'
 fi
 
-# -- editor
-export EDITOR='nvim'
-export VISUAL='nvim'
-export VISUDO='nvim'
-export SUDO_EDITOR='nvim'
-alias vi='nvim'
-alias vim='nvim'
+export VISUAL=$EDITOR
+export VISUDO=$EDITOR
+export SUDO_EDITOR=$EDITOR
 
 # -- pager
 export PAGER='less'
 # Set the default Less options.
-# -F exit if content fits on one screen
-# -g hilight only last match for searches
-# -i ignore case when searching
-# -M set prompt style
-# -R output 'raw' control characters
-# -S truncate long lines rather than wrapping
-# -w highlight first new line after forward-screen
-# -X disable termcap init/deinit for screen clearing
-# -z-4 set size of window
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X and -F (exit if the content fits on one screen) to enable it.
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # -- rust
@@ -57,7 +47,6 @@ if [[ -x "$(command -v rustc)" ]]; then
     export RUST_SRC_PATH="${RUST_ROOT}/lib/rustlib/src/rust/src/"
     export PATH="$PATH:$HOME/.cargo/bin"
 fi
-
 
 
 #
@@ -168,7 +157,18 @@ alias ll="ls -alh"
 
 # -- pip
 alias piu='python3 -m pip install --upgrade'
-alias pipold='python3 -m pip list --outdated'
+# -- venv
+function vvv() {
+    if [[ -v VIRTUAL_ENV ]]; then
+        deactivate
+    else
+        if [[ ! -d .venv ]]; then
+            python3 -m venv .venv $@
+        fi
+        source .venv/bin/activate
+    fi
+}
+
 
 # -- git-log
 alias git-log-smp='git log --graph --pretty=oneline --abbrev-commit'
@@ -181,12 +181,3 @@ alias what-javas='/usr/libexec/java_home -V'
 # -- tmux
 # detach all other tmux sessions
 alias takeover='tmux detach -a'
-
-#==== Prompt =================================================================
-#
-
-prompt_zprelude_pwd() {
-    # contract $HOME to ~
-    local -r PWD="${PWD/#$HOME/~}"
-
-}
