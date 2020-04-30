@@ -116,7 +116,6 @@ noremap <C-l> <C-w>l
 nnoremap / /\v
                                 " magic by default
 cnoremap %s/ %s/\v
-nnoremap <leader>af :ALEFix<cr>
 
 " ==== Statusline ==============================================================
 if has('statusline')
