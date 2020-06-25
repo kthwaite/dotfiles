@@ -45,7 +45,6 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if [[ -x "$(command -v rustc)" ]]; then
     export RUST_ROOT="$(rustc --print sysroot)"
     export RUST_SRC_PATH="${RUST_ROOT}/lib/rustlib/src/rust/src/"
-    export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
 
