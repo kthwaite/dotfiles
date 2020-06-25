@@ -1,6 +1,10 @@
 # tiny virtualenv manager
 export V_VIRTUALENV_HOME="${HOME}/.virtualenvs"
 
+function v_virtualenv_list_raw {
+    find $V_VIRTUALENV_HOME -path "*/bin/python" | sed -r -e "s@${V_VIRTUALENV_HOME}/(.*)/bin/python@\1@g"| sort
+}
+
 function v_virtualenv_list {
     for python in $(find $V_VIRTUALENV_HOME -path "*/bin/python" | sort); do
         local NAME=$(echo $python | sed -r -e "s@${V_VIRTUALENV_HOME}/(.*)/bin/python@\1@g")
@@ -46,7 +50,7 @@ function v {
 
 function v_install_completion {
     _v_virtualenv_list () {
-        reply=( $(v_virtualenv_list) )
+        reply=( $(v_virtualenv_list_raw) )
     }
     compctl -K _v_virtualenv_list v
 }
