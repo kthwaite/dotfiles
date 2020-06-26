@@ -2,24 +2,20 @@
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" coc.vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" deoplete
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" let g:deoplete#enable_at_startup = 1
-Plug 'racer-rust/vim-racer'
-" Plug 'zchee/deoplete-jedi'
-"Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " NERDTree
 Plug 'scrooloose/nerdtree'
-" Asynchronous Lint Engine
-Plug 'w0rp/ale'
 " The ultimate undo history visualizer for VIM
 Plug 'mbbill/undotree', { 'on': ['UndotreeFocus', 'UndotreeShow', 'UndotreeToggle'] }
 " Show git status in gutter.
 Plug 'airblade/vim-gitgutter'
 " Enhanced splash screen with RUFs.
 Plug 'mhinz/vim-startify'
+" Sublime-style multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+" Language pack
+Plug 'sheerun/vim-polyglot'
 
 " --- Search
 " Search with rg
@@ -28,34 +24,13 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf.vim'
 
 " --- C/C++
-" Enhanced C++ highlighting.
-Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 " Extra highlighting of typedefs, enumerations etc (based on ctags)
 Plug 'vim-scripts/TagHighlight', { 'for': ['c', 'cpp'] }
 
-" --- Rust
-" rust.vim
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-" TOML syntax
-Plug 'cespare/vim-toml', { 'for': 'toml' }
 
 " --- Python
 " Vim uses current virtualenv.
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
-" Black formatting
-Plug 'ambv/black', {'for': 'python'}
-
-" --- Javascript
-" Syntax highlighting for JSON in Vim
-Plug 'elzr/vim-json', { 'for': 'json' }
-" ES6 support
-Plug 'isRuslan/vim-es6', { 'for': 'javascript' }
-" Javascript
-Plug 'pangloss/vim-javascript'
-" JSX
-Plug 'mxw/vim-jsx'
-" Typescript
-Plug 'leafgarland/typescript-vim'
 
 " --- txt
 " distraction-free writing
@@ -70,8 +45,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'takac/vim-hardtime'
 " Highlight trailing whitespace.
 Plug 'bronson/vim-trailing-whitespace'
-" Override awful default YAML syntax highlighting
-Plug 'stephpy/vim-yaml'
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
