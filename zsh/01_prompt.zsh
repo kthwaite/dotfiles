@@ -1,4 +1,5 @@
 setopt PROMPT_SUBST
+
 rprompt_git() {
     # inside_git_repo="$(git rev-parse --is-inside-work-tree 2>/dev/null)"
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then

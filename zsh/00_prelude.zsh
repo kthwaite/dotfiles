@@ -4,6 +4,9 @@
 
 # zle uses emacs mode
 bindkey -e
+# allow comments in shell
+set -k
+
 
 #==== Env vars =================================================================
 #
@@ -79,6 +82,7 @@ unsetopt MAIL_WARNING     # Don't print a warning message if a mail file has bee
 # Termcap
 #
 
+# FIXME
 if zstyle -t ':prezto:environment:termcap' color; then
   export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
   export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
@@ -129,6 +133,8 @@ unsetopt CLOBBER            # Do not overwrite existing files with > and >>.
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
+# -- autocompletion
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 #==== Aliases ==================================================================
 #
@@ -156,6 +162,9 @@ alias ll="ls -alh"
 
 # -- pip
 alias piu='python3 -m pip install --upgrade'
+alias pio='python3 -m pip list --outdated'
+
+V_VIRTUALENV_HOME="$HOME/.virtualenvs"
 # -- venv
 function vvv() {
     if [[ -v VIRTUAL_ENV ]]; then
@@ -168,6 +177,81 @@ function vvv() {
     fi
 }
 
+function v_virtualenv_list() {
+    find $V_VIRTUALENV_HOME -path "*/bin/activate" | sed -r -e "s@${V_VIRTUALENV_HOME}/(.*)/bin/activate@\1@g" | sort
+}
+
+function v_virtualenv_switch() {
+    local -r V_ENV=$1
+    local -r V_ACTIVATE="$V_VIRTUALENV_HOME/$V_ENV/bin/activate"
+    if [ ! -f "$V_ACTIVATE" ]; then
+        echo "No such virtual environment: '$V_ENV'"
+        return 127
+    fi
+    if [[ -v VIRTUAL_ENV ]]; then
+        deactivate
+    fi
+    source $V_ACTIVATE
+}
+
+function v_virtualenv_new() {
+    local -r V_ENV=$1
+    local -r V_DIR="$V_VIRTUALENV_HOME/$V_ENV"
+    if [ -e "$V_DIR" ]; then
+        echo "Virtual environment already exists: '$V_ENV'"
+        return 127
+    fi
+    python3 -m venv "$V_DIR" --prompt "$V_ENV"
+}
+
+function v_virtualenv_upgrade() {
+    local -r V_ENV=$1
+    local -r V_DIR="$V_VIRTUALENV_HOME/$V_ENV"
+    if [ ! -e "$V_DIR" ]; then
+        echo "Virtual environment does not exist: '$V_ENV'"
+        return 127
+    fi
+    python3 -m venv --upgrade "$V_DIR"
+}
+
+function v() {
+    if [[ $# -eq 0 ]]; then
+        if [[ -v VIRTUAL_ENV ]]; then
+            deactivate
+        else
+            v_virtualenv_list
+        fi
+        return
+    fi
+    case "$1" in
+        -l|--list)
+            v_virtualenv_list
+            ;;
+        -n|--new)
+            shift;
+            v_virtualenv_new $@
+            ;;
+        -u|--upgrade)
+            shift;
+            v_virtualenv_upgrade $@
+            ;;
+        -d|--deactivate)
+            if [[ -v VIRTUAL_ENV ]]; then
+                deactivate
+            else
+                echo "No virtual environment currently active."
+            fi
+            ;;
+        *)
+            v_virtualenv_switch $1
+            ;;
+    esac
+}
+
+if [[ -x "$(command -v bat)" ]]; then
+    # if `bat` is present, replace cat(1) with bat's 'plain' mode
+    alias cat="bat --plain"
+fi
 
 # -- git
 alias git-orig='git remote get-url --all origin'
