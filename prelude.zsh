@@ -45,7 +45,6 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if [[ -x "$(command -v rustc)" ]]; then
     export RUST_ROOT="$(rustc --print sysroot)"
     export RUST_SRC_PATH="${RUST_ROOT}/lib/rustlib/src/rust/src/"
-    export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
 
@@ -170,7 +169,8 @@ function vvv() {
 }
 
 
-# -- git-log
+# -- git
+alias git-orig='git remote get-url --all origin'
 alias git-log-smp='git log --graph --pretty=oneline --abbrev-commit'
 alias git-log-pty='git log --oneline --decorate --all --graph'
 alias git-log-mn="git log --pretty=format:'• %C(bold yellow)%h%C(reset) %C(red)%an%C(reset) %C(blue)%ai%C(reset) %C(bold red)%D%C(reset) | %s'"
