@@ -164,8 +164,7 @@ alias ll="ls -alh"
 alias piu='python3 -m pip install --upgrade'
 alias pio='python3 -m pip list --outdated'
 
-V_VIRTUALENV_HOME="$HOME/.virtualenvs"
-# -- venv
+# -- local dir venv
 function vvv() {
     if [[ -v VIRTUAL_ENV ]]; then
         deactivate
@@ -177,76 +176,6 @@ function vvv() {
     fi
 }
 
-function v_virtualenv_list() {
-    find $V_VIRTUALENV_HOME -path "*/bin/activate" | sed -r -e "s@${V_VIRTUALENV_HOME}/(.*)/bin/activate@\1@g" | sort
-}
-
-function v_virtualenv_switch() {
-    local -r V_ENV=$1
-    local -r V_ACTIVATE="$V_VIRTUALENV_HOME/$V_ENV/bin/activate"
-    if [ ! -f "$V_ACTIVATE" ]; then
-        echo "No such virtual environment: '$V_ENV'"
-        return 127
-    fi
-    if [[ -v VIRTUAL_ENV ]]; then
-        deactivate
-    fi
-    source $V_ACTIVATE
-}
-
-function v_virtualenv_new() {
-    local -r V_ENV=$1
-    local -r V_DIR="$V_VIRTUALENV_HOME/$V_ENV"
-    if [ -e "$V_DIR" ]; then
-        echo "Virtual environment already exists: '$V_ENV'"
-        return 127
-    fi
-    python3 -m venv "$V_DIR" --prompt "$V_ENV"
-}
-
-function v_virtualenv_upgrade() {
-    local -r V_ENV=$1
-    local -r V_DIR="$V_VIRTUALENV_HOME/$V_ENV"
-    if [ ! -e "$V_DIR" ]; then
-        echo "Virtual environment does not exist: '$V_ENV'"
-        return 127
-    fi
-    python3 -m venv --upgrade "$V_DIR"
-}
-
-function v() {
-    if [[ $# -eq 0 ]]; then
-        if [[ -v VIRTUAL_ENV ]]; then
-            deactivate
-        else
-            v_virtualenv_list
-        fi
-        return
-    fi
-    case "$1" in
-        -l|--list)
-            v_virtualenv_list
-            ;;
-        -n|--new)
-            shift;
-            v_virtualenv_new $@
-            ;;
-        -u|--upgrade)
-            shift;
-            v_virtualenv_upgrade $@
-            ;;
-        -d|--deactivate)
-            if [[ -v VIRTUAL_ENV ]]; then
-                deactivate
-            else
-                echo "No virtual environment currently active."
-            fi
-            ;;
-        *)
-            v_virtualenv_switch $1
-            ;;
-    esac
-}
 
 if [[ -x "$(command -v bat)" ]]; then
     # if `bat` is present, replace cat(1) with bat's 'plain' mode
