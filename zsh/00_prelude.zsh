@@ -138,7 +138,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 #==== Aliases ==================================================================
 #
-alias diskuse='df --si | sort -hk3'
+alias diskuse='df --si | tail -n +2 | sort -hk3'
 
 # -- exa
 if [[ -x "$(command -v exa)" ]]; then
