@@ -157,12 +157,16 @@ if [[ -x "$(command -v exa)" ]]; then
     # as `dt` with git status
     alias dtg="exa -algbT --git --git-ignore -I '.git'"
 else
+# -- ls
     alias l='ls -tlha'
     alias lr='ls -rtlha'
+    alias ll="ls -alh"
 fi
-# -- ls
-# invoke regular `ls`
-alias ll="ls -alh"
+
+if [[ -x "$(command -v bat)" ]]; then
+    # if `bat` is present, replace cat(1) with bat's 'plain' mode
+    alias cat="${aliases[bat]:-bat} --plain"
+fi
 
 # -- pip
 alias piu='python3 -m pip install --upgrade'
@@ -181,10 +185,6 @@ function vvv() {
 }
 
 
-if [[ -x "$(command -v bat)" ]]; then
-    # if `bat` is present, replace cat(1) with bat's 'plain' mode
-    alias cat="bat --plain"
-fi
 
 # -- git
 alias git-orig='git remote get-url --all origin'
