@@ -1,10 +1,8 @@
 setopt PROMPT_SUBST
 
 rprompt_git() {
-    # inside_git_repo="$(git rev-parse --is-inside-work-tree 2>/dev/null)"
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        local -r ret="%B%F{2}$(git branch --show-current)%f%b"
-        print "$ret"
+        print "%B%F{2}$(git rev-parse --abbrev-ref HEAD)%f%b"
     fi
 }
 
@@ -19,8 +17,7 @@ prompt_path_part() {
         # M includes the matched portion in the result
         # :h takes the directory part of the path, dropping the last item
         # :t takes the last part of the path
-        local -r part="${${${${(@j:/:M)${(@s:/:)current_dir}##.#?}:h}%/}//\%/%%}/${${current_dir:t}//\%/%%}"
-        print "$part"
+        print "${${${${(@j:/:M)${(@s:/:)current_dir}##.#?}:h}%/}//\%/%%}/${${current_dir:t}//\%/%%}"
     fi
 }
 
