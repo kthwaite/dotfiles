@@ -2,8 +2,21 @@
 #[    prelude                                                                  ]
 #-------------------------------------------------------------------------------
 
-# zle uses emacs mode
-bindkey -e
+# -- keybinds
+export KEYTIMEOUT=20
+# vi mode
+bindkey -v
+# Allow command line editing in an external editor.
+autoload -Uz edit-command-line
+zle -N edit-command-line
+# custom vikeys
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M vicmd "\C-X\C-E" edit-command-line
+bindkey -M vicmd "^[[3~" delete-char
+# ctrl-right/left for word skip
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 # allow comments in shell
 set -k
 
