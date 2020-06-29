@@ -13,8 +13,8 @@ FORCE=false
 
 # Symlink file.
 function make_link {
-    local readonly src=${1}
-    local readonly dst=${2}
+    local -r src=${1}
+    local -r dst=${2}
     echo "${src} -> ${dst}"
     if ! [[ -e ${dst} ]] || [[ ${FORCE} = true ]]
     then
@@ -27,17 +27,24 @@ function make_link {
 
 # Dry-run symlink.
 function make_link_dry {
-    local readonly src=${1}
-    local readonly dst=${2}
-    echo "${src} -> ${dst}\c"
+    local -r src=${1}
+    local -r dst=${2}
 
     if [[ -e ${dst} ]]
     then
-        printf " \033[0;31m(file already exists!)\033[0m\n"
+        printf " \033[0;31mFile already exists:\033[0m ${dst}\n"
     else
-        echo
+        echo " Would link: ${src} -> ${dst}"
     fi
+}
 
+function print_help {
+    echo "Usage: link.sh [OPTIONS]"
+    echo
+    echo "    -d/--dry-run    Check and print links, but do not create"
+    echo "    -f/--force      Overwrite existing files or symlinks"
+    echo "    -v/--verbose    Print tracing output"
+    echo "    -h/--help       Print this help text"
 }
 
 function main {
@@ -49,15 +56,15 @@ function main {
             -d|--dry-run)
                 DRY_RUN=true
                 ;;
-        esac
-        case ${key} in
             -f|--force)
                 FORCE=true
                 ;;
-        esac
-        case ${key} in
             -v|--verbose)
                 set -o xtrace
+                ;;
+            -h|--help)
+                print_help
+                exit
                 ;;
         esac
         shift
@@ -75,3 +82,5 @@ function main {
         fi
     done
 }
+
+main $@
