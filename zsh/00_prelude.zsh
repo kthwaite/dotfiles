@@ -22,6 +22,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         local -r MANPAGE=$1
         man -t "$MANPAGE" | open -f -a Preview
     }
+elif [[ "$OSTYPE" == cygwin* ]]; then
+  alias open='cygstart'
+else
+  alias open='xdg-open'
 fi
 
 # -- editor
