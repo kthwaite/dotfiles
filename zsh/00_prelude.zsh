@@ -155,6 +155,28 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 #==== Aliases ==================================================================
 #
+# -- nocorrect common
+alias ack='nocorrect ack'
+alias bat='nocorrect bat'
+alias cd='nocorrect cd'
+alias cp='nocorrect cp'
+alias dust='nocorrect dust'
+alias fd='nocorrect fd'
+alias grep='nocorrect grep'
+alias jq='nocorrect jq'
+alias ln='nocorrect ln'
+alias man='nocorrect man'
+alias mkdir='nocorrect mkdir'
+alias mv='nocorrect mv'
+alias psql='nocorrect psql'
+alias rg='nocorrect rg'
+alias rm='nocorrect rm'
+
+
+# alias rm='rm -i'
+alias rm="${aliases[rm]:-rm} -i"
+# show memory size in megabytes by default
+alias free='free -m'
 alias diskuse='df --si | tail -n +2 | sort -hk3'
 
 # -- exa
