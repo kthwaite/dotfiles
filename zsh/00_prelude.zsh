@@ -157,7 +157,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 #
 # -- nocorrect common
 alias ack='nocorrect ack'
-alias bat='nocorrect bat'
 alias cd='nocorrect cd'
 alias cp='nocorrect cp'
 alias dust='nocorrect dust'
@@ -171,7 +170,6 @@ alias mv='nocorrect mv'
 alias psql='nocorrect psql'
 alias rg='nocorrect rg'
 alias rm='nocorrect rm'
-
 
 # alias rm='rm -i'
 alias rm="${aliases[rm]:-rm} -i"
@@ -199,8 +197,9 @@ else
 fi
 
 if [[ -x "$(command -v bat)" ]]; then
+    alias bat='nocorrect bat'
     # if `bat` is present, replace cat(1) with bat's 'plain' mode
-    alias cat="${aliases[bat]:-bat} --plain"
+    alias cat="nocorrect bat --plain"
 fi
 
 # -- pip
@@ -218,7 +217,6 @@ function vvv() {
         source .venv/bin/activate
     fi
 }
-
 
 
 # -- git
