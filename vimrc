@@ -8,6 +8,8 @@ call plug#end()
 " neovim Python hosts
 let g:python3_host_prog='python3'
 
+set clipboard=unnamed
+
 source $HOME/.dotfiles/vim/01_setup.vim
 
 " ==== plugins ================================================================
