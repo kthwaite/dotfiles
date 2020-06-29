@@ -125,3 +125,5 @@ endif
 
 set statusline+=%#warningmsg#
 set statusline+=%*
+
+set clipboard=unnamedplus
