@@ -2,8 +2,24 @@
 #[    prelude                                                                  ]
 #-------------------------------------------------------------------------------
 
-# zle uses emacs mode
-bindkey -e
+# -- keybinds
+export KEYTIMEOUT=20
+# vi mode
+bindkey -v
+# Allow command line editing in an external editor.
+autoload -Uz edit-command-line
+zle -N edit-command-line
+# custom vikeys
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M vicmd "\C-X\C-E" edit-command-line
+bindkey -M vicmd "^[[3~" delete-char
+# ctrl-right/left for word skip
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# allow comments in shell
+set -k
+
 
 #==== Env vars =================================================================
 #
@@ -19,27 +35,24 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         local -r MANPAGE=$1
         man -t "$MANPAGE" | open -f -a Preview
     }
-fi
-
-#
-# Language
-#
-
-if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
+elif [[ "$OSTYPE" == cygwin* ]]; then
+  alias open='cygstart'
+else
+  alias open='xdg-open'
 fi
 
 # -- editor
-VIM=vim
 if [[ -x "$(command -v nvim)" ]]; then
-    VIM=neovim
+    export EDITOR='nvim'
+    alias vi='nvim'
+    alias vim='nvim'
+else
+    export EDITOR='vim'
 fi
-export EDITOR=$VIM
-export VISUAL=$VIM
-export VISUDO=$VIM
-export SUDO_EDITOR=$VIM
-alias vi=$VIM
-alias vim=$VIM
+
+export VISUAL=$EDITOR
+export VISUDO=$EDITOR
+export SUDO_EDITOR=$EDITOR
 
 # -- pager
 export PAGER='less'
@@ -52,9 +65,7 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if [[ -x "$(command -v rustc)" ]]; then
     export RUST_ROOT="$(rustc --print sysroot)"
     export RUST_SRC_PATH="${RUST_ROOT}/lib/rustlib/src/rust/src/"
-    export PATH="$PATH:$HOME/.cargo/bin"
 fi
-
 
 
 #
@@ -88,6 +99,7 @@ unsetopt MAIL_WARNING     # Don't print a warning message if a mail file has bee
 # Termcap
 #
 
+# FIXME
 if zstyle -t ':prezto:environment:termcap' color; then
   export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
   export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
@@ -138,10 +150,32 @@ unsetopt CLOBBER            # Do not overwrite existing files with > and >>.
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
+# -- autocompletion
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 #==== Aliases ==================================================================
 #
-alias diskuse='df --si | sort -hk3'
+# -- nocorrect common
+alias ack='nocorrect ack'
+alias cd='nocorrect cd'
+alias cp='nocorrect cp'
+alias dust='nocorrect dust'
+alias fd='nocorrect fd'
+alias grep='nocorrect grep'
+alias jq='nocorrect jq'
+alias ln='nocorrect ln'
+alias man='nocorrect man'
+alias mkdir='nocorrect mkdir'
+alias mv='nocorrect mv'
+alias psql='nocorrect psql'
+alias rg='nocorrect rg'
+alias rm='nocorrect rm'
+
+# alias rm='rm -i'
+alias rm="${aliases[rm]:-rm} -i"
+# show memory size in megabytes by default
+alias free='free -m'
+alias diskuse='df --si | tail -n +2 | sort -hk3'
 
 # -- exa
 if [[ -x "$(command -v exa)" ]]; then
@@ -156,18 +190,37 @@ if [[ -x "$(command -v exa)" ]]; then
     # as `dt` with git status
     alias dtg="exa -algbT --git --git-ignore -I '.git'"
 else
+# -- ls
     alias l='ls -tlha'
     alias lr='ls -rtlha'
+    alias ll="ls -alh"
 fi
-# -- ls
-# invoke regular `ls`
-alias ll="ls -alh"
+
+if [[ -x "$(command -v bat)" ]]; then
+    alias bat='nocorrect bat'
+    # if `bat` is present, replace cat(1) with bat's 'plain' mode
+    alias cat="nocorrect bat --plain"
+fi
 
 # -- pip
 alias piu='python3 -m pip install --upgrade'
-alias pipold='python3 -m pip list --outdated'
+alias pio='python3 -m pip list --outdated'
 
-# -- git-log
+# -- local dir venv
+function vvv() {
+    if [[ -v VIRTUAL_ENV ]]; then
+        deactivate
+    else
+        if [[ ! -d .venv ]]; then
+            python3 -m venv .venv $@
+        fi
+        source .venv/bin/activate
+    fi
+}
+
+
+# -- git
+alias git-orig='git remote get-url --all origin'
 alias git-log-smp='git log --graph --pretty=oneline --abbrev-commit'
 alias git-log-pty='git log --oneline --decorate --all --graph'
 alias git-log-mn="git log --pretty=format:'• %C(bold yellow)%h%C(reset) %C(red)%an%C(reset) %C(blue)%ai%C(reset) %C(bold red)%D%C(reset) | %s'"
@@ -178,12 +231,3 @@ alias what-javas='/usr/libexec/java_home -V'
 # -- tmux
 # detach all other tmux sessions
 alias takeover='tmux detach -a'
-
-#==== Prompt =================================================================
-#
-
-prompt_zprelude_pwd() {
-    # contract $HOME to ~
-    local -r PWD="${PWD/#$HOME/~}"
-
-}
