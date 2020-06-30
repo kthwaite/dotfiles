@@ -2,7 +2,7 @@ setopt PROMPT_SUBST
 
 rprompt_git() {
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        print "%B%F{2}$(git rev-parse --abbrev-ref HEAD)%f%b"
+        print "%B%F{2}$(git symbolic-ref --short HEAD)%f%b"
     fi
 }
 
