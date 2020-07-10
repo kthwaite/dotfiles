@@ -208,7 +208,7 @@ alias pio='python3 -m pip list --outdated'
 
 # -- local dir venv
 function vvv() {
-    if [[ -v VIRTUAL_ENV ]]; then
+    if [[ -n "$VIRTUAL_ENV" ]]; then
         deactivate
     else
         if [[ ! -d .venv ]]; then
@@ -218,6 +218,11 @@ function vvv() {
     fi
 }
 
+
+if [[ -x "$(command -v bat)" ]]; then
+    # if `bat` is present, replace cat(1) with bat's 'plain' mode
+    alias cat="bat --plain"
+fi
 
 # -- git
 alias git-orig='git remote get-url --all origin'
