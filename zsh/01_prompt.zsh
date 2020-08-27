@@ -1,8 +1,16 @@
 setopt PROMPT_SUBST
 
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*' formats "%b %m%u%c "
+
+precmd() {
+    vcs_info
+}
+
 rprompt_git() {
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        print "%B%F{2}$(git symbolic-ref --short HEAD)%f%b"
+        print "%B%F{2}${vcs_info_msg_0_}%f%b"
     fi
 }
 
