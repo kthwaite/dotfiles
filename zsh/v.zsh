@@ -5,7 +5,7 @@ export V_VIRTUALENV_HOME="${HOME}/.virtualenvs"
 
 # 'raw' list without python versions, for zsh completion
 function v_virtualenv_list_raw {
-    find "$V_VIRTUALENV_HOME" -path "*/bin/python" | sed -E -e "s@${V_VIRTUALENV_HOME}/(.*)/bin/python@\1@g"| sort
+    ls ${V_VIRTUALENV_HOME}/*/bin/python | sed -Ee "s@${V_VIRTUALENV_HOME}/(.*)/bin/python@\1@g"
 }
 
 # list virtualenvs with python versions
