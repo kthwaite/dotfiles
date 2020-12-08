@@ -96,7 +96,15 @@ endif
 
 
 " ==== keymap ==================================================================
+" --- leader
 let mapleader = " "
+
+" --- remap <esc>
+inoremap jk <esc>
+inoremap <esc> <nop>
+
+" --- vimrc
+" edit vimrc
 if has('nvim')
     if has('win32')
         nnoremap <leader>ev :e ~/_vimrc<cr>
@@ -104,19 +112,28 @@ if has('nvim')
         nnoremap <leader>ev :e ~/.vimrc<cr>
     endif
 endif
+" reload vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
-inoremap jk <esc>
-inoremap <esc> <nop>
+
+" --- search
+" magic by default
+nnoremap / /\v
+" magic by default
+cnoremap %s/ %s/\v
+
+" --- yank
+nnoremap Y y$
+
+" --- splits
 " remap split navigation
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-                                " magic by default
-nnoremap / /\v
-                                " magic by default
-cnoremap %s/ %s/\v
-nnoremap <leader>af :ALEFix<cr>
+" horizontal split to vertical split
+nnoremap <leader>hv <C-w>t<C-w>H
+" vertical split to horizontal split
+nnoremap <leader>vh <C-w>t<C-w>K
 
 " ==== Statusline ==============================================================
 if has('statusline')
