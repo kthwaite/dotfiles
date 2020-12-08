@@ -48,6 +48,11 @@ Plug 'bronson/vim-trailing-whitespace'
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
+" send arbitrary text to other windows
+Plug 'jpalardy/vim-slime'
+" floating terminal window
+Plug 'voldikss/vim-floaterm'
+
 "
 " Colour schemes
 Plug 'sickill/vim-monokai'
