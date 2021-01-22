@@ -31,3 +31,10 @@ let g:fzf_colors =
 "Get previews
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+" --- keymaps
+" leader-f for filesj
+nnoremap <silent> <leader>f :Files<cr>
+" leader-b for buffers
+nnoremap <silent> <leader>b :Buffers<cr>
+" leader-m for normal-mode maps
+nnoremap <silent> <leader>m :Maps<cr>

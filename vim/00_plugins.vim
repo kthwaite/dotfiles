@@ -1,14 +1,9 @@
-
-" Enable for startup time testing
-" Plug 'tweekmonster/startuptime.vim'
-"
 " Airline and airline themes
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" coc.vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'racer-rust/vim-racer'
-
 " NERDTree
 Plug 'scrooloose/nerdtree'
 " The ultimate undo history visualizer for VIM
@@ -17,18 +12,21 @@ Plug 'mbbill/undotree', { 'on': ['UndotreeFocus', 'UndotreeShow', 'UndotreeToggl
 Plug 'airblade/vim-gitgutter'
 " Enhanced splash screen with RUFs.
 Plug 'mhinz/vim-startify'
+" Sublime-style multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+" Language pack
+Plug 'sheerun/vim-polyglot'
 
-" === Search
+" --- Search
 " Search with rg
 Plug 'jremmen/vim-ripgrep'
 " Search with fzf
 Plug 'junegunn/fzf.vim'
 
-" === Language plugins
-Plug 'sheerun/vim-polyglot'
 " --- C/C++
 " Extra highlighting of typedefs, enumerations etc (based on ctags)
 Plug 'vim-scripts/TagHighlight', { 'for': ['c', 'cpp'] }
+
 
 " --- Python
 " Vim uses current virtualenv.
@@ -50,10 +48,15 @@ Plug 'bronson/vim-trailing-whitespace'
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
+" send arbitrary text to other windows
+Plug 'jpalardy/vim-slime'
+" floating terminal window
+Plug 'voldikss/vim-floaterm'
+
 "
 " Colour schemes
-Plug 'arcticicestudio/nord-vim'
-Plug 'joshdick/onedark.vim'
+Plug 'sickill/vim-monokai'
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
-Plug 'sickill/vim-monokai'
+Plug 'joshdick/onedark.vim'
+Plug 'arcticicestudio/nord-vim'
