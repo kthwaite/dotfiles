@@ -180,7 +180,7 @@ alias diskuse='df --si | tail -n +2 | sort -hk3'
 # -- exa
 if [[ -x "$(command -v exa)" ]]; then
     # default
-    alias l="exa -alg --group-directories-first"
+    alias l="exa -al --group-directories-first"
     # as `l` but ordered by modified-time
     alias lh='exa -la --group-directories-first -s modified'
     # as `l` with git status
