@@ -5,16 +5,16 @@ export V_VIRTUALENV_HOME="${HOME}/.virtualenvs"
 
 # 'raw' list without python versions, for zsh completion
 function v_virtualenv_list_raw {
-   ls ${V_VIRTUALENV_HOME}/*/bin/python | sed -E -e "s@${V_VIRTUALENV_HOME}/(.*)/bin/python@\1@g"| sort
+    find "$V_VIRTUALENV_HOME" -path "*/bin/python" | sed -E -e "s@${V_VIRTUALENV_HOME}/(.*)/bin/python@\1@g"| sort
 }
 
 # list virtualenvs with python versions
 function v_virtualenv_list {
     local NAME
     local VER
-    for python in $(ls ${V_VIRTUALENV_HOME}/*/bin/python | sort); do
+    for python in $(echo "${V_VIRTUALENV_HOME}"/*/bin/python | sort); do
         NAME=$(echo "$python" | sed -E -e "s@${V_VIRTUALENV_HOME}/(.*)/bin/python@\1@g")
-        VER=$($python -c 'import sys;print(sys.version.split()[0],end="")')
+        VER=$($python -V | awk '{print $2}')
         echo "${NAME} (${VER})"
     done
 }
