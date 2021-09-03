@@ -12,9 +12,9 @@ function v_virtualenv_list_raw {
 function v_virtualenv_list {
     local NAME
     local VER
-    for python in $(find "$V_VIRTUALENV_HOME" -path "*/bin/python" | sort); do
+    for python in $(echo "${V_VIRTUALENV_HOME}"/*/bin/python | sort); do
         NAME=$(echo "$python" | sed -E -e "s@${V_VIRTUALENV_HOME}/(.*)/bin/python@\1@g")
-        VER=$($python -c 'import sys;print(sys.version.split()[0],end="")')
+        VER=$($python -V | awk '{print $2}')
         echo "${NAME} (${VER})"
     done
 }
