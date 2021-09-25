@@ -1,13 +1,14 @@
-
-" Enable for startup time testing
-" Plug 'tweekmonster/startuptime.vim'
-"
 " Airline and airline themes
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'racer-rust/vim-racer'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'racer-rust/vim-racer'
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'hrsh7th/cmp-buffer'   " nvim-cmp source for buffer words.
+Plug 'hrsh7th/nvim-cmp'     " Autocompletion plugin
+Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
@@ -32,7 +33,7 @@ Plug 'vim-scripts/TagHighlight', { 'for': ['c', 'cpp'] }
 
 " --- Python
 " Vim uses current virtualenv.
-Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
+" Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 
 " --- txt
 " distraction-free writing
