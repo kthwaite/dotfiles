@@ -49,7 +49,6 @@ au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
 " YAML is two-spaced by default
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd BufEnter *.tsx set filetype=typescript
 
 
 " ==== UI ======================================================================
