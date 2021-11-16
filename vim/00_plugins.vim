@@ -2,13 +2,15 @@
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'racer-rust/vim-racer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/cmp-buffer'   " nvim-cmp source for buffer words.
 Plug 'hrsh7th/nvim-cmp'     " Autocompletion plugin
+Plug 'hrsh7th/cmp-path'     " Path plugin for nvim-cmp
+Plug 'hrsh7th/cmp-cmdline'  " Command-line plugin for nvim-cmp
 Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
+Plug 'hrsh7th/cmp-vsnip'    " Snippets for nvim-cmp
+Plug 'hrsh7th/vim-vsnip'
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
