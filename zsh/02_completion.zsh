@@ -9,6 +9,8 @@ setopt EXTENDED_GLOB       # Needed for file modification glob modifiers with co
 unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
 unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
 
+bindkey '^[[Z' reverse-menu-complete
+
 # Load and initialize the completion system ignoring insecure directories with a
 # cache time of 20 hours, so it should almost always regenerate the first time a
 # shell is opened each day.
@@ -28,7 +30,7 @@ unset _comp_path
 
 # Use caching to make completion for commands such as dpkg and apt usable.
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/prezto/zcompcache"
+zstyle ':completion::complete:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh_comp_cache/zcompcache"
 
 # Case-insensitive (all), partial-word, and then substring completion.
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
