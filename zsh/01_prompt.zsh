@@ -2,7 +2,10 @@ setopt PROMPT_SUBST
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats "%b %m%u%c "
+zstyle ':vcs_info:git:*' formats "%b"
+#zstyle ':vcs_info:git:*' stagedstr " %F{4}s"
+#zstyle ':vcs_info:git:*' unstagedstr " %F{1}u"
+#zstyle ':vcs_info:git:*' check-for-changes true
 
 precmd() {
     vcs_info
