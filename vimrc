@@ -14,8 +14,7 @@ source $HOME/.dotfiles/vim/01_setup.vim
 
 " ==== plugins ================================================================
 source $HOME/.dotfiles/vim/0X_startify.vim
-source $HOME/.dotfiles/vim/0X_airline.vim
+source $HOME/.dotfiles/vim/0X_lualine.vim
 source $HOME/.dotfiles/vim/0X_nerdtree.vim
 source $HOME/.dotfiles/vim/0X_lsp_installer.vim
 source $HOME/.dotfiles/vim/0X_fzf.vim
-
