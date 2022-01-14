@@ -33,10 +33,6 @@ Plug 'sheerun/vim-polyglot'
 " Extra highlighting of typedefs, enumerations etc (based on ctags)
 Plug 'vim-scripts/TagHighlight', { 'for': ['c', 'cpp'] }
 
-" --- Python
-" Vim uses current virtualenv.
-" Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
-
 " --- txt
 " distraction-free writing
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
@@ -51,7 +47,6 @@ Plug 'bronson/vim-trailing-whitespace'
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
-"
 " Colour schemes
 Plug 'arcticicestudio/nord-vim'
 Plug 'joshdick/onedark.vim'
