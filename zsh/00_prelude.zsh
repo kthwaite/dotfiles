@@ -177,6 +177,10 @@ alias rm="${aliases[rm]:-rm} -i"
 alias free='free -m'
 alias diskuse='df --si | tail -n +2 | sort -hk3'
 
+# -- rsync
+alias rarm='rsync -ah --progress --remove-source-files'
+alias rapp='rsync -ah --progress --partial'
+
 # -- exa
 if [[ -x "$(command -v exa)" ]]; then
     # default
