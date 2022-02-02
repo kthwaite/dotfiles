@@ -206,6 +206,9 @@ if [[ -x "$(command -v bat)" ]]; then
     alias cat="nocorrect bat --plain --wrap character"
 fi
 
+# -- python
+alias p='python'
+
 # -- pip
 alias piu='python3 -m pip install --upgrade'
 alias pio='python3 -m pip list --outdated'
