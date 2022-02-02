@@ -203,7 +203,7 @@ fi
 if [[ -x "$(command -v bat)" ]]; then
     alias bat='nocorrect bat'
     # if `bat` is present, replace cat(1) with bat's 'plain' mode
-    alias cat="nocorrect bat --plain"
+    alias cat="nocorrect bat --plain --wrap character"
 fi
 
 # -- pip
