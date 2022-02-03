@@ -1,7 +1,10 @@
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-local cmp = require 'cmp'
+local lsp_servers = require 'nvim-lsp-installer.servers'
+local lsp_installer = require('nvim-lsp-installer')
+local cmp = require('cmp')
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -43,9 +46,6 @@ cmp.setup.cmdline(':', {
     sources = { { name = 'cmdline' } }
 })
 
-local lsp_installer = require 'nvim-lsp-installer'
-local lsp_servers = require 'nvim-lsp-installer.servers'
-local M = {}
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
@@ -87,15 +87,52 @@ end
 
 local function setup_handlers()
     vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            virtual_text = {
-                spacing = 5,
-                prefix = '',
-            },
-            signs = false, -- rely on highlight styles instead, don't want to clobber signcolumn
-        })
+        virtual_text = {
+            spacing = 5,
+            prefix = '',
+        },
+        signs = false, -- rely on highlight styles instead, don't want to clobber signcolumn
+    })
 end
 
-function M.setup()
+-- per-language-server options
+local ls_opts = {
+    ['eslintls'] = function(opts)
+        opts.settings = {
+            format = { enable = true },
+        }
+    end,
+    ['sumneko_lua'] = function(opts)
+        local runtime_path = vim.split(package.path, ';')
+        table.insert(runtime_path, "lua/?.lua")
+        table.insert(runtime_path, "lua/?/init.lua")
+        opts.settings = {
+            Lua = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                    -- Setup your lua path
+                    path = runtime_path,
+                },
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = {'vim'},
+                },
+                workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = vim.api.nvim_get_runtime_file("", true),
+                },
+                -- Do not send telemetry data containing a randomized but unique identifier
+                telemetry = {
+                    enable = false,
+                },
+            },
+        }
+    end,
+}
+
+local lsp_helper = {}
+function lsp_helper.setup()
     setup_handlers()
     vim.cmd [[ command! LspLog tabnew|lua vim.cmd('e'..vim.lsp.get_log_path()) ]]
 
@@ -112,16 +149,12 @@ function M.setup()
             capabilities = capabilities,
         }
 
-        if server.name == 'eslintls' then
-            opts.settings = {
-                format = { enable = true },
-            }
+        if ls_opts[server.name] then
+            ls_opts[server.name](opts)
         end
 
         server:setup(opts)
         vim.cmd [[ do User LspAttachBuffers ]]
     end)
 end
-
-M.setup()
-
+lsp_helper.setup()
