@@ -29,6 +29,7 @@ vim.opt.backup=false                -- no backup files
 vim.opt.bs='indent,eol,start'       -- backspace over everything!
 vim.opt.ruler=true                  -- display cursor position
 vim.opt.lazyredraw=true             -- faster macro invocation
+vim.opt.ttyfast=true                -- fast redrawing
 vim.opt.title=true                  -- set window title
 vim.opt.titlestring='%t'            -- ibid
 -- current directory is always window-local
@@ -39,6 +40,7 @@ vim.opt.incsearch=true              -- show matches while you type
 vim.opt.hlsearch=true               -- highlight matches
 vim.opt.ignorecase=true             -- search case insensitive
 vim.opt.smartcase=true              -- search case-sensitive when uppercase characters appear in search
+vim.opt.wrapscan=true               -- searches wrap around
 -- search magic by default
 map('n', '/', '/\\v', {noremap=true})
 -- search magic by default
@@ -59,6 +61,7 @@ vim.opt.autoindent=true		                -- keep prev indent
 vim.opt.smartindent=true                    -- smart autoindenting
 vim.opt.smarttab=true                       -- insert shiftwidth blanks
 vim.opt.shiftwidth=4	                    -- width of shift, spaces
+vim.opt.shiftround=true
 vim.opt.softtabstop=4                       -- number of tab-spaces while editing
 vim.opt.expandtab=true 		                -- tabs are spaces
 vim.opt.tabstop=4		                    -- tabs are worth 4 spaces
@@ -83,6 +86,7 @@ vim.opt.foldenable=false                    -- automatic code folding is the dev
 -- ==== Commands =================================================================
 -- reload vimrc
 map('n', '<leader>sv', ':source $MYVIMRC<cr>', {noremap=true})
+map('n', '<leader>ev', ':e $MYVIMRC<cr>', {noremap=true})
 -- remap esc to jk
 map('i', 'jk', '<esc>', {noremap=true})
 map('i', '<esc>', '<nop>', {noremap=true})
