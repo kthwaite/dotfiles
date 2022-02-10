@@ -15,6 +15,13 @@ return require('packer').startup(function()
     use 'tpope/vim-surround'
     -- commenting made simple
     use 'tpope/vim-commentary'
+    -- display a popup with possible keybindings of the command you started typing
+    use{
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {}
+        end
+    }
 
     -- telescope
     use {
