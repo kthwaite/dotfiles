@@ -11,9 +11,10 @@ return require('packer').startup(function()
     use 'sainnhe/sonokai'
 
     -- QoL
-    use 'tpope/vim-surround'    -- surround-marks made simple
-    -- use 'sheerun/vim-polyglot'  -- A solid language pack for Vim
-
+    -- surround-marks made simple
+    use 'tpope/vim-surround'
+    -- commenting made simple
+    use 'tpope/vim-commentary'
 
     -- telescope
     use {
