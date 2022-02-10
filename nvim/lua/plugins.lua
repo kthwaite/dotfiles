@@ -8,10 +8,7 @@ return require('packer').startup(function()
 
     -- colorschemes
     use 'tanvirtin/monokai.nvim'
-    use 'arcticicestudio/nord-vim'
-    use 'joshdick/onedark.vim'
-    use 'morhetz/gruvbox'
-    use 'rakr/vim-one'
+    use 'sainnhe/sonokai'
 
     -- QoL
     use 'tpope/vim-surround'    -- surround-marks made simple
