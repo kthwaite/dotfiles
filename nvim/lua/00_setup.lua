@@ -12,7 +12,7 @@ end
 local noremap = function(capt, repl)
     map('', capt, repl, {noremap=true})
 end
-vim.g.mapleader = ' '
+vim.g.mapleader = '\\'
 
 -- ==== Setup ===================================================================
 -- local vim = require('vim')
