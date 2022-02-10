@@ -1,4 +1,5 @@
--- vim.cmd [[packadd packer.nvim]]
+-- silence linter errors with local import
+local use = require('packer').use
 
 return require('packer').startup(function()
     -- packer has to manage itself.
