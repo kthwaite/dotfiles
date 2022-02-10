@@ -29,6 +29,22 @@ return require('packer').startup(function()
         requires = {'nvim-lua/plenary.nvim'}
     }
 
+    -- distraction-free writing
+    use {
+        "folke/zen-mode.nvim",
+        config = function()
+            require("zen-mode").setup {
+                on_open = function(_)
+                    vim.cmd('Limelight')
+                end,
+                on_close = function(_)
+                    vim.cmd('Limelight!')
+                end,
+            }
+        end
+    }
+    use 'junegunn/limelight.vim'
+
     -- lualine
     use 'nvim-lualine/lualine.nvim'
     use 'kyazdani42/nvim-web-devicons'
