@@ -69,11 +69,21 @@ return require('packer').startup(function()
     use 'goolord/alpha-nvim'
 
     -- git
-    -- use 'airblade/vim-gitgutter'
     use {
         'lewis6991/gitsigns.nvim',
         requires = {
-            'nvim-lua/plenary.nvim'
+            'nvim-lua/plenary.nvim',
         }
     }
+
+    -- === experimental zone ===
+
+    --A fancy, configurable, notification manager for NeoVim
+    use 'rcarriga/nvim-notify'
+    -- nvim-treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+
 end)
