@@ -1,9 +1,10 @@
-lua << EOF
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-local cmp = require 'cmp'
+local lsp_servers = require 'nvim-lsp-installer.servers'
+local lsp_installer = require('nvim-lsp-installer')
+local cmp = require('cmp')
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -11,35 +12,33 @@ cmp.setup {
         end,
     },
     mapping = {
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-p>'] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                cmp.complete()
+            end
+        end, { 'i', 'c'}),
+        ["<C-n>"] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                cmp.complete()
+            end
+        end, { 'i', 'c' }),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
+            --behavior = cmp.ConfirmBehavior.Replace,
+            --select = true,
         },
-        ['<Tab>'] = function(fallback)
-            if vim.fn.pumvisible() == 1 then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
-            else
-                fallback()
-            end
-        end,
-        ['<S-Tab>'] = function(fallback)
-            if vim.fn.pumvisible() == 1 then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
-            else
-                fallback()
-            end
-        end,
     },
     sources = {
         { name = 'vsnip' },
-        { name = 'path' },
         { name = 'buffer' },
+        { name = 'path' },
         { name = 'nvim_lsp' },
     },
 }
@@ -47,9 +46,6 @@ cmp.setup.cmdline(':', {
     sources = { { name = 'cmdline' } }
 })
 
-local lsp_installer = require 'nvim-lsp-installer'
-local lsp_servers = require 'nvim-lsp-installer.servers'
-local M = {}
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
@@ -91,15 +87,52 @@ end
 
 local function setup_handlers()
     vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            virtual_text = {
-                spacing = 5,
-                prefix = '',
-            },
-            signs = false, -- rely on highlight styles instead, don't want to clobber signcolumn
-        })
+        virtual_text = {
+            spacing = 5,
+            prefix = '',
+        },
+        signs = false, -- rely on highlight styles instead, don't want to clobber signcolumn
+    })
 end
 
-function M.setup()
+-- per-language-server options
+local ls_opts = {
+    ['eslintls'] = function(opts)
+        opts.settings = {
+            format = { enable = true },
+        }
+    end,
+    ['sumneko_lua'] = function(opts)
+        local runtime_path = vim.split(package.path, ';')
+        table.insert(runtime_path, "lua/?.lua")
+        table.insert(runtime_path, "lua/?/init.lua")
+        opts.settings = {
+            Lua = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                    -- Setup your lua path
+                    path = runtime_path,
+                },
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = {'vim'},
+                },
+                workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = vim.api.nvim_get_runtime_file("", true),
+                },
+                -- Do not send telemetry data containing a randomized but unique identifier
+                telemetry = {
+                    enable = false,
+                },
+            },
+        }
+    end,
+}
+
+local lsp_helper = {}
+function lsp_helper.setup()
     setup_handlers()
     vim.cmd [[ command! LspLog tabnew|lua vim.cmd('e'..vim.lsp.get_log_path()) ]]
 
@@ -116,17 +149,12 @@ function M.setup()
             capabilities = capabilities,
         }
 
-        if server.name == 'eslint' then
-            local default_opts = server:get_default_options()
-            -- allow eslint to use yarn 2 plug'n'play
-            opts.cmd = vim.list_extend({"yarn", "node"}, default_opts.cmd)
+        if ls_opts[server.name] then
+            ls_opts[server.name](opts)
         end
 
         server:setup(opts)
         vim.cmd [[ do User LspAttachBuffers ]]
     end)
 end
-
-M.setup()
-
-EOF
+lsp_helper.setup()
