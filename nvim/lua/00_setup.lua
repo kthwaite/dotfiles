@@ -1,5 +1,6 @@
 vim.cmd [[
     syntax on
+    filetype plugin indent on
     colorscheme monokai
     set clipboard=unnamedplus
 ]]
