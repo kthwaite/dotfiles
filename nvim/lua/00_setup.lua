@@ -2,6 +2,7 @@ vim.cmd [[
     syntax on
     colorscheme monokai
     set clipboard=unnamedplus
+    let g:slime_target="tmux"
 ]]
 
 -- ==== Prelims
