@@ -31,8 +31,9 @@ return require('packer').startup(function()
     use 'kyazdani42/nvim-tree.lua'
 
     -- LSP
+    use 'williamboman/mason.nvim'
+    use "williamboman/mason-lspconfig.nvim"
     use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
     use 'hrsh7th/cmp-buffer'   -- nvim-cmp source for buffer words.
     use 'hrsh7th/nvim-cmp'     -- Autocompletion plugin
     use 'hrsh7th/cmp-path'     -- Path plugin for nvim-cmp
