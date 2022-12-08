@@ -47,6 +47,9 @@ return require('packer').startup(function()
     -- startup screen
     use 'goolord/alpha-nvim'
 
+    -- vim-slime
+    use 'jpalardy/vim-slime'
+
     -- git
     -- use 'airblade/vim-gitgutter'
     use {
