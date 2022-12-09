@@ -99,3 +99,5 @@ noremap('<C-l>', '<C-w>l')
 nnoremap('<leader>hv','<C-w>t<C-w>H')
 -- vertical split to horizontal split
 nnoremap('<leader>vh', '<C-w>t<C-w>K')
+
+

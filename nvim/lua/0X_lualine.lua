@@ -1,9 +1,6 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    -- theme = bubblegum,
-    -- component_separators = { left = '', right = ''},
-    -- section_separators = { left = '', right = ''},
     disabled_filetypes = {},
     always_divide_middle = true,
   },
@@ -15,10 +12,7 @@ require('lualine').setup {
     lualine_y = {[=[%{strlen(&fenc)?&fenc:&enc}[%{&fileformat}]]=],
         {
             'diagnostics',
-            diagnostics_color = {
-                -- error = { bg = '#e32636', fg = colors.med_gray_lo },
-                -- warn = { bg = '#ffa500', fg = colors.med_gray_lo },
-            },
+            diagnostics_color = { },
             symbols = { warn = ' W:', hint = ' H:', info = ' I:' }
         }
     },
