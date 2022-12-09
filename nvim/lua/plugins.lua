@@ -7,10 +7,6 @@ return require('packer').startup(function()
 
     -- colorschemes
     use 'tanvirtin/monokai.nvim'
-    use 'arcticicestudio/nord-vim'
-    use 'joshdick/onedark.vim'
-    use 'morhetz/gruvbox'
-    use 'rakr/vim-one'
 
     -- QoL
     use 'tpope/vim-surround'    -- surround-marks made simple
@@ -24,16 +20,25 @@ return require('packer').startup(function()
     }
 
     -- lualine
-    use 'nvim-lualine/lualine.nvim'
-    use 'kyazdani42/nvim-web-devicons'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
-    -- file browsenvim-tree-r
+    -- file browser
     use 'kyazdani42/nvim-tree.lua'
 
-    -- LSP
+    -- Mason / LSP / DAP / Linters
     use 'williamboman/mason.nvim'
     use "williamboman/mason-lspconfig.nvim"
     use 'neovim/nvim-lspconfig'
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        }
+    }
+    use 'mfussenegger/nvim-dap'
     use 'hrsh7th/cmp-buffer'   -- nvim-cmp source for buffer words.
     use 'hrsh7th/nvim-cmp'     -- Autocompletion plugin
     use 'hrsh7th/cmp-path'     -- Path plugin for nvim-cmp
@@ -51,7 +56,6 @@ return require('packer').startup(function()
     use 'jpalardy/vim-slime'
 
     -- git
-    -- use 'airblade/vim-gitgutter'
     use {
         'lewis6991/gitsigns.nvim',
         requires = {
