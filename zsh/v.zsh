@@ -126,4 +126,20 @@ function v_install_completion {
     compctl -K _v_virtualenv_list v
 }
 
+# -- local dir venv
+function vvv() {
+    if [[ -v VIRTUAL_ENV ]]; then
+        deactivate
+    else
+        if [[ ! -d .venv ]]; then
+            name=${$(basename $(pwd))// /_}
+            ver=$(python --version | cut -d ' ' -f 2)
+            venv_prompt="$name-$ver"
+            echo "Creating venv with name '$venv_prompt'"
+            python3 -m venv .venv --prompt $venv_prompt --upgrade-deps $@
+        fi
+        source .venv/bin/activate
+    fi
+}
+
 v_install_completion

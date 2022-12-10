@@ -1,5 +1,4 @@
--- silence linter errors with local import
-local use = require('packer').use
+-- vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
     -- packer has to manage itself.
@@ -8,42 +7,21 @@ return require('packer').startup(function()
 
     -- colorschemes
     use 'tanvirtin/monokai.nvim'
-    use 'sainnhe/sonokai'
+    use 'arcticicestudio/nord-vim'
+    use 'joshdick/onedark.vim'
+    use 'morhetz/gruvbox'
+    use 'rakr/vim-one'
 
     -- QoL
-    -- surround-marks made simple
-    use 'tpope/vim-surround'
-    -- commenting made simple
-    use 'tpope/vim-commentary'
-    -- display a popup with possible keybindings of the command you started typing
-    use{
-        "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup {}
-        end
-    }
+    use 'tpope/vim-surround'    -- surround-marks made simple
+    -- use 'sheerun/vim-polyglot'  -- A solid language pack for Vim
+
 
     -- telescope
     use {
         'nvim-telescope/telescope.nvim',
         requires = {'nvim-lua/plenary.nvim'}
     }
-
-    -- distraction-free writing
-    use {
-        "folke/zen-mode.nvim",
-        config = function()
-            require("zen-mode").setup {
-                on_open = function(_)
-                    vim.cmd('Limelight')
-                end,
-                on_close = function(_)
-                    vim.cmd('Limelight!')
-                end,
-            }
-        end
-    }
-    use 'junegunn/limelight.vim'
 
     -- lualine
     use 'nvim-lualine/lualine.nvim'
@@ -53,8 +31,9 @@ return require('packer').startup(function()
     use 'kyazdani42/nvim-tree.lua'
 
     -- LSP
+    use 'williamboman/mason.nvim'
+    use "williamboman/mason-lspconfig.nvim"
     use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
     use 'hrsh7th/cmp-buffer'   -- nvim-cmp source for buffer words.
     use 'hrsh7th/nvim-cmp'     -- Autocompletion plugin
     use 'hrsh7th/cmp-path'     -- Path plugin for nvim-cmp
@@ -68,22 +47,15 @@ return require('packer').startup(function()
     -- startup screen
     use 'goolord/alpha-nvim'
 
+    -- vim-slime
+    use 'jpalardy/vim-slime'
+
     -- git
+    -- use 'airblade/vim-gitgutter'
     use {
         'lewis6991/gitsigns.nvim',
         requires = {
-            'nvim-lua/plenary.nvim',
+            'nvim-lua/plenary.nvim'
         }
     }
-
-    -- === experimental zone ===
-
-    --A fancy, configurable, notification manager for NeoVim
-    use 'rcarriga/nvim-notify'
-    -- nvim-treesitter
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
-
 end)
