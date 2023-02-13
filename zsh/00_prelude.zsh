@@ -206,19 +206,6 @@ fi
 alias piu='python3 -m pip install --upgrade'
 alias pio='python3 -m pip list --outdated'
 
-# -- local dir venv
-function vvv() {
-    if [[ -v VIRTUAL_ENV ]]; then
-        deactivate
-    else
-        if [[ ! -d .venv ]]; then
-            python3 -m venv .venv $@
-        fi
-        source .venv/bin/activate
-    fi
-}
-
-
 # -- git
 alias git-orig='git remote get-url --all origin'
 alias git-log-smp='git log --graph --pretty=oneline --abbrev-commit'
