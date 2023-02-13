@@ -1,9 +1,9 @@
 local au = require("utility").au
 -- binds
 au("BufWritePre", "*.py,*.lua", function()
-    vim.lsp.buf.format({ async = true })
+    vim.lsp.buf.format({ async = false })
 end)
-au('TextYankPost', "*", function()
+au("TextYankPost", "*", function()
     vim.highlight.on_yank({ higroup = "IncSearch", timeout = 350 })
 end)
 
