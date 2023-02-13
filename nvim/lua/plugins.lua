@@ -50,7 +50,11 @@ return require('packer').startup(function()
     use 'lbrayner/vim-rzip'
 
     -- startup screen
-    use 'goolord/alpha-nvim'
+    use 'kyazdani42/nvim-web-devicons'
+    use {
+        'goolord/alpha-nvim',
+        requires = { 'kyazdani42/nvim-web-devicons' }
+    }
 
     -- vim-slime
     use 'jpalardy/vim-slime'
