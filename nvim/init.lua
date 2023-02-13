@@ -1,15 +1,10 @@
--- # plugins
-require("00_plugins")
+--------------------------------------------------------------------------------
 -- # basic setup
-require("01_setup")
--- universal search
-require("02_maps")
--- # plugin config
--- language server / debug adapter / linter package manager
-require("0X_lsp")
--- UI customisation
-require("0X_ui")
--- git gutter config
-require("0X_gitsigns")
+require("00_setup")
 -- Falls DSL config
-require("0X_falls")
+vim.filetype.add({ extension = { fall = "falls" } })
+--------------------------------------------------------------------------------
+-- # plugins
+require("01_plugins")
+-- # mappings
+require("02_maps")
