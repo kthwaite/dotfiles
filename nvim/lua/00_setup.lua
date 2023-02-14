@@ -7,6 +7,8 @@ local noremap = util.noremap
 local au = util.au
 vim.g.mapleader = " "
 
+vim.g.python3_host_prog = require("_config").python3_host_prog
+
 -- ==== Setup ===================================================================
 -- local vim = require('vim')
 vim.opt.shell = "zsh -l"
@@ -29,7 +31,6 @@ vim.opt.titlestring = "%t" -- ibid
 -- current directory is always window-local
 -- vim.cmd([[autocmd BufEnter * lcd %:p:h]])
 au("BufEnter", "*", "lcd %:p:h")
-vim.cmd.colorscheme("monokai")
 
 -- ==== Search ==================================================================
 vim.opt.incsearch = true -- show matches while you type
