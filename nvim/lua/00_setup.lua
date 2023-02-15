@@ -6,6 +6,7 @@ local inoremap = util.inoremap
 local noremap = util.noremap
 local au = util.au
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.g.python3_host_prog = require("_config").python3_host_prog
 
@@ -25,7 +26,7 @@ vim.opt.swapfile = false -- no swapfile
 vim.opt.backup = false -- no backup files
 vim.opt.bs = "indent,eol,start" -- backspace over everything!
 vim.opt.ruler = true -- display cursor position
-vim.opt.lazyredraw = true -- faster macro invocation
+vim.opt.lazyredraw = false
 vim.opt.title = true -- set window title
 vim.opt.titlestring = "%t" -- ibid
 -- current directory is always window-local
@@ -80,6 +81,7 @@ vim.opt.foldenable = false -- automatic code folding is the devil's work
 -- ==== Commands =================================================================
 -- reload vimrc
 nnoremap("<leader>sv", ":source $MYVIMRC<cr>")
+nnoremap("<leader>ev", ":e $MYVIMRC<cr>")
 -- remap esc to jk
 inoremap("jk", "<esc>")
 inoremap("<esc>", "<nop>")
