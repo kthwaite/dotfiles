@@ -12,12 +12,6 @@ main() {
     mkdir -p $HOME/.config/nvim
     ln -s $HOME/.dotfiles/nvim/init.lua $HOME/.config/nvim
     ln -s $HOME/.dotfiles/nvim/lua $HOME/.config/nvim
-    nvim --headless -c "call mkdir(stdpath('config'), 'p')|exe 'edit '.stdpath('config').'/init.vim'|wq"
-    cat <<EOT >> "$HOME/.config/nvim/init.vim"
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-source ~/.vimrc
-EOT
 }
 
 main "$@"
