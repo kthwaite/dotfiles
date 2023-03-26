@@ -3,7 +3,7 @@
 return {
 	"jose-elias-alvarez/null-ls.nvim",
 	lazy = true,
-	ft = { "python", "lua", "rust" },
+	ft = { "python", "lua", "rust", "sql", "javascript" },
 	config = function()
 		local null_ls = require("null-ls")
 		null_ls.setup({

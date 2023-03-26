@@ -71,7 +71,7 @@ return {
 	-- # mason
 	{
 		"williamboman/mason.nvim",
-		config = {
+		opts = {
 			ui = {
 				icons = {
 					package_installed = "✓",
@@ -83,7 +83,7 @@ return {
 	-- # mason-lspconfig
 	{
 		"williamboman/mason-lspconfig.nvim",
-		config = function()
+		opts = function()
 			local mason_lspconfig = require("mason-lspconfig")
 
 			mason_lspconfig.setup({
@@ -114,5 +114,6 @@ return {
 				})
 		end,
 	},
-	{ "neovim/nvim-lspconfig" },
+	"simrat39/rust-tools.nvim",
+	"neovim/nvim-lspconfig",
 }

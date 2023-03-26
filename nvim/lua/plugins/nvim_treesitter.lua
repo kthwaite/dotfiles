@@ -4,10 +4,11 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     lazy = true,
-    ft = { "python", "lua", "falls" },
+    ft = { "python", "lua", "falls", "wgsl", "bash", "markdown", "vim" },
+    cmd = { "TSInstall" },
     config = function()
         require("nvim-treesitter.configs").setup({
-            ensure_installed = { "vim", "help" },
+            ensure_installed = { "help", "python", "wgsl", "lua", "bash", "markdown", "regex", "vim" },
             highlight = {
                 enable = true,
             },
