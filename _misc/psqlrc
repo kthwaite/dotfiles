@@ -85,7 +85,7 @@ Display Attribute   FG / BG Color
 \set PROMPT1 '%[%33[33m%] %`date +"%H:%M:%S"` %[%33[34;0m%] %[%33[31;1m%]%n%[%33[33;1m%]@%[%33[37;m%]%M:%>/%/ %[%33[0m%]%[%33[34m%]%x%» %[%33[0m%]'
 \set PROMPT2 '%[%33[33m%] %l %R %[%33[35m%]» %[%33[0m%]'
 
--- Use `pspg` pager
-\setenv PAGER 'pspg --only-for-tables -X -b'
+-- Uncomment to use `pspg` pager, if available
+-- \setenv PAGER 'pspg --only-for-tables -X -b'
 
 \set QUIET 0
