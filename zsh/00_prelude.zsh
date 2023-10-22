@@ -177,18 +177,18 @@ alias rm="${aliases[rm]:-rm} -i"
 alias free='free -m'
 alias diskuse='df --si | tail -n +2 | sort -hk3'
 
-# -- exa
-if [[ -x "$(command -v exa)" ]]; then
+# -- eza
+if [[ -x "$(command -v eza)" ]]; then
     # default
-    alias l="exa -alg --group-directories-first"
+    alias l="eza -alg --group-directories-first"
     # as `l` but ordered by modified-time
-    alias lh='exa -la --group-directories-first -s modified'
+    alias lh='eza -la --group-directories-first -s modified'
     # as `l` with git status
-    alias lg='exa -la --group-directories-first --git'
+    alias lg='eza -la --group-directories-first --git'
     # list directory tree from cwd
-    alias dt="exa -algbT"
+    alias dt="eza -algbT"
     # as `dt` with git status
-    alias dtg="exa -algbT --git --git-ignore -I '.git'"
+    alias dtg="eza -algbT --git --git-ignore -I '.git'"
 else
 # -- ls
     alias l='ls -tlha'
