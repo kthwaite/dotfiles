@@ -29,7 +29,7 @@ return {
                             cmp.complete()
                         end
                     end, { "i", "c" }),
-                    ["<C-d>"] = cmp.mapping.scroll_docs( -4),
+                    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.close(),
@@ -52,16 +52,16 @@ return {
     },
     --------------------------------------------------------------------------------
     -- # cmp sources
-    "hrsh7th/cmp-path", -- Path plugin for nvim-cmp
-    "hrsh7th/cmp-cmdline", -- Command-line plugin for nvim-cmp
-    "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+    "hrsh7th/cmp-path",         -- Path plugin for nvim-cmp
+    "hrsh7th/cmp-cmdline",      -- Command-line plugin for nvim-cmp
+    "hrsh7th/cmp-nvim-lsp",     -- LSP source for nvim-cmp
     "saadparwaiz1/cmp_luasnip", -- Snippets for nvim-cmp
-    "hrsh7th/cmp-buffer", -- nvim-cmp source for buffer words.
+    "hrsh7th/cmp-buffer",       -- nvim-cmp source for buffer words.
     -- lua snippet engine
     {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
-        version = "<CurrentMajor>.*",
+        -- version = "<CurrentMajor>.*",
         -- install jsregexp (optional!).
         build = "make install_jsregexp",
     },

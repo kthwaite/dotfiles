@@ -1,19 +1,41 @@
 --------------------------------------------------------------------------------
 -- # tree-sitter
 return {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    lazy = true,
-    ft = { "python", "lua", "falls", "wgsl", "bash", "markdown", "vim" },
-    cmd = { "TSInstall" },
-    config = function()
-        require("nvim-treesitter.configs").setup({
-            ensure_installed = { "help", "python", "wgsl", "lua", "bash", "markdown", "regex", "vim" },
-            highlight = {
-                enable = true,
-            },
-        })
-        local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	lazy = true,
+	ft = {
+		"python",
+		"lua",
+		"wgsl",
+		"bash",
+		"markdown",
+		"vim",
+		"typescript",
+		"typescriptreact",
+		"javascript",
+		"javascriptreact",
+	},
+	cmd = { "TSInstall" },
+	config = function()
+		require("nvim-treesitter.configs").setup({
+			ensure_installed = {
+				"python",
+				"wgsl",
+				"lua",
+				"bash",
+				"markdown",
+				"regex",
+				"vim",
+				"javascript",
+				"typescript",
+			},
+			highlight = {
+				enable = true,
+			},
+		})
+		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+		--[[
         parser_config.falls = {
             install_info = {
                 url = "~/Source/_projects/falls/tree-sitter-falls", -- local path or git repo
@@ -25,5 +47,6 @@ return {
             },
             filetype = "falls", -- if filetype does not match the parser name
         }
-    end,
+        ]]
+	end,
 }

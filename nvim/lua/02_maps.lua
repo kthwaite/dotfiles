@@ -2,19 +2,19 @@ local au = require("utility").au
 local nnoremap = require("utility").nnoremap
 -- # autocommands
 -- autoformat buffer on write
-au("BufWritePre", "*.py,*.lua,*.rs", function()
-	vim.lsp.buf.format({ async = false })
-end)
+local fmt_group = vim.api.nvim_create_augroup("kt_au_fmt", { clear = true })
+au("BufWritePre", "*.py,*.lua,*.rs,*.sql", "Format", { group = fmt_group })
 -- highlight text on yank
+local util_group = vim.api.nvim_create_augroup("kt_au_util", { clear = true })
 au("TextYankPost", "*", function()
-	vim.highlight.on_yank({ higroup = "IncSearch", timeout = 350 })
-end)
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 350 })
+end, {group=util_group})
 
 -- # binds
 -- reload vimrc
 nnoremap("<leader>sv", ":source $MYVIMRC<cr>")
 -- close hidden buffers
-nnoremap("<leader>Bd", ":up | %bd | e#")
+nnoremap("<leader>Bd", ":up | %bd | e#<cr>")
 
 -- ==== Plugins ===============================================================
 -- # neotree

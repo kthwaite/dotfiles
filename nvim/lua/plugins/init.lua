@@ -4,9 +4,6 @@ return {
 		"tpope/vim-surround",
 		event = "InsertEnter",
 	},
-
-	-- use 'sheerun/vim-polyglot'  -- A solid language pack for Vim
-
 	-- nested zip support for yarn-pnp
 	"lbrayner/vim-rzip",
 	-- error summaries
