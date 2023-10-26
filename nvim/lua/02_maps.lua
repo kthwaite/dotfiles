@@ -2,13 +2,15 @@ local au = require("utility").au
 local nnoremap = require("utility").nnoremap
 -- # autocommands
 -- autoformat buffer on write
-local fmt_group = vim.api.nvim_create_augroup("kt_au_fmt", { clear = true })
-au("BufWritePre", "*.py,*.lua,*.rs,*.sql", "Format", { group = fmt_group })
+local fmt_group = vim.api.nvim_create_augroup("kt_fmt", { clear = true })
+au("BufWritePre", "*.py,*.lua,*.rs,*.sql", function()
+	vim.lsp.buf.format({ async = true })
+end, { group = fmt_group })
 -- highlight text on yank
-local util_group = vim.api.nvim_create_augroup("kt_au_util", { clear = true })
+local util_group = vim.api.nvim_create_augroup("kt_util", { clear = true })
 au("TextYankPost", "*", function()
-    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 350 })
-end, {group=util_group})
+	vim.highlight.on_yank({ higroup = "IncSearch", timeout = 350 })
+end, { group = util_group })
 
 -- # binds
 -- reload vimrc
