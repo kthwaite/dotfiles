@@ -218,3 +218,5 @@ alias what-javas='/usr/libexec/java_home -V'
 # -- tmux
 # detach all other tmux sessions
 alias takeover='tmux detach -a'
+
+export PYTHONSTARTUP=$HOME/.dotfiles/pythonstartup.py
