@@ -1,6 +1,10 @@
+--------------------------------------------------------------------------------
 -- # basic setup
 require("00_setup")
--- # plugin config
+-- Falls DSL config
+vim.filetype.add({ extension = { fall = "falls" } })
+--------------------------------------------------------------------------------
+-- # plugins
 require("01_plugins")
--- # keymaps
+-- # mappings
 require("02_maps")
