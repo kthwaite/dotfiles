@@ -3,7 +3,7 @@ local nnoremap = require("utility").nnoremap
 -- # autocommands
 -- autoformat buffer on write
 local fmt_group = vim.api.nvim_create_augroup("kt_fmt", { clear = true })
-au("BufWritePre", "*.py,*.lua,*.rs,*.sql", function()
+au("BufWritePre", "*.py,*.lua,*.rs,*.sql,*.js,*.jsx,*.ts,*.tsx", function()
 	vim.lsp.buf.format({ async = true })
 end, { group = fmt_group })
 -- highlight text on yank
