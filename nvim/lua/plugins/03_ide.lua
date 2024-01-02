@@ -318,6 +318,7 @@ return {
 	-- lua snippet engine
 	{
 		"L3MON4D3/LuaSnip",
+		version = "v2.*",
 		-- follow latest release.
 		-- version = "<CurrentMajor>.*",
 		-- install jsregexp (optional!).
