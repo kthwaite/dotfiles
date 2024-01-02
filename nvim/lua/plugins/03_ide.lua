@@ -391,6 +391,8 @@ return {
 					python = true,
 					lua = true,
 					falls = true,
+					c = true,
+					cpp = true,
 					["*"] = false,
 				},
 			})
