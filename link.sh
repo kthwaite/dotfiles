@@ -4,7 +4,7 @@
 set -o errexit
 set -o nounset
 
-readonly symlinkable=(gitignore_global pylintrc tmux.conf vimrc)
+readonly symlinkable=(gitignore_global pylintrc tmux.conf)
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 DRY_RUN=false
